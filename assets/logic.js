@@ -1,12 +1,13 @@
-/* global firebase moment */
+
 // Steps to complete:
 
 // 1. Initialize Firebase
 // 2. Create button for adding new employees - then update the html + update the database
 // 3. Create a way to retrieve employees from the employee database.
-// 4. Create a way to calculate the months worked. Using difference between start and current time.
-//    Then use moment.js formatting to set difference in months.
-// 5. Calculate Total billed
+// 4. Create a way to calculate the sum for all the work
+// 5. Total weekly bill calculation
+// 6. grab the weekly bill each week --> making a tab for them to revisit later 
+// 7. Authorization!!!!!
 
 // 1. Initialize Firebase
 var config = {
@@ -67,14 +68,6 @@ $("#add-job-btn").on("click", function(event) {
   return false;
 });
 
-//counter
-var projectNumberSum= 0;
-var metalLaborSum = 0;
-
-// the sum of all the job
-$("#ro").append(projectNumberSum);
-$("#metalLabor").append(metalLaborSum);
-
 
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
@@ -86,23 +79,22 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var projMetalLabor = childSnapshot.val().metalLabor;
 
   //computing all the sum 
-  projectNumberSum += projNumb;
-  metalLaborSum += projMetalLabor;
-
+  sumMetalLabor += parseInt(projMetalLabor);
 
   // Employee Info
   console.log(projNumb);
   console.log(projMetalLabor);
 
-
-  // // Calculate the total billed rate
-  // var empBilled = empMonths * empRate;
-  // console.log(empBilled);
-
   // Add each train's data into the table
   $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td></tr>");
-
-
-
 });
+
+// 4. Create a way to calculate the sum for all the work
+
+//counter
+var sumMetalLabor= 0;
+
+// // the sum of all the job
+$(".sumJob #metalLabor").append(sumMetalLabor);
+
 
