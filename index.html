@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
     <title>Contact | Linh Nguyen</title>
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/resets.css"> -->
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- Style -->
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 <body>
     <div class="row">
@@ -22,14 +25,14 @@
                         <!-- Entry Form -->
                         <form>
                           <div class="form-group">
-                            <label for="employee-name-input">Project Number</label>
+                            <label for="projNumb-input">Project Number</label>
                             <input class="form-control" id="projNumb-input" type="number">
                           </div>
                           <div class="form-group">
-                            <label for="start-input">Metal Labor</label>
+                            <label for="metalLabor-input">Metal Labor</label>
                             <input class="form-control" id="metalLabor-input" type="number">
                           </div>
-                          <div class="form-group">
+<!--                           <div class="form-group">
                             <label for="rate-input">Frame Labor</label>
                             <input class="form-control" id="frameLabor-input" type="number">
                           </div>
@@ -60,7 +63,7 @@
                           <div class="form-group">
                             <label for="rate-input">Tow & Storage</label>
                             <input class="form-control" id="towAndStorage-input" type="number">
-                          </div>
+                          </div> -->
                           <button class="btn btn-primary" id="add-job-btn" type="submit">Submit</button>
                         </form>
                       </div>
@@ -68,21 +71,30 @@
                 </div>
               </section>
             </div>
-            <div class="col-md-12">
-              <section class="sidebar">
-                <div id="connect">
-                  <div class="row">         
-                      <h2>TOTAL</h2>
-                    </div>
-                    <div class="row">
-                      
-                      <a href="https://github.com/linhng15"><img src="assets/images/github.png" class="social" alt="GitHub" /></a>
-                      <a href="https://www.linkedin.com/in/linh-nguyen-a33444129/"><img src="assets/images/linkedin.png" class="social" alt="LinkedIn" /></a>
-                      <a href="http://stackoverflow.com/"><img src="assets/images/stackoverflow-square-shadow-social-media.png" class="social" alt="Stack Overflow" /></a>
-                    </div>
-                  </div>
-                </section>
+          </div>
         </div>
+    <div class="col-md-6">
+      <section class="sidebar">
+        <div id="connect">
+          <div class="row">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title"><strong>TOTAL</strong></h3>
+              </div>
+              <div class="panel-body">
+                <table class="table table-hover" id='calculation-table'>
+                  <thead>
+                    <tr>
+                      <th>some type of calculation</th>       
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
          
     <div class="row">
         <div class="col-lg-12">
@@ -95,21 +107,18 @@
               <table class="table table-hover" id='employee-table'>
                 <thead>
                   <tr>
-                    <th>Employee Name</th>
-                    <th>Role</th>
+                    <th>Project Number</th>
                     <th>Metal Labor</th>
-                    <th>Frame Labor</th>
+                    <!-- <th>Frame Labor</th>
                     <th>Mech Labor</th>
                     <th>Paint Labor</th>
                     <th>Part Sales</th>
                     <th>Parts Cost</th>
                     <th>Paint & Materials</th>
                     <th>Sublet</th>
-                    <th>Tow & Storage</th>            
+                    <th>Tow & Storage</th>      -->       
                   </tr>
                 </thead>
-                <tbody>
-                </tbody>
               </table>
             </div>
           </div>
@@ -120,9 +129,8 @@
           Copyright &copy; 2017 Linh Nguyen
         </div>
     </footer>
-  <!-- jQuery -->
+  <!-- firebase -->
   <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script type="number/javascript" src="assets/logic.js"></script>
+  <script type="text/javascript" src="assets/logic.js"></script>
  </body>
 </html>
