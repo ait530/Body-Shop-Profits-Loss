@@ -18,7 +18,7 @@
           <div id="connect">
             <div class="row">         
               <h2>BODYSHOP PROFIT & LOSS</h2>
-              <HR>
+              <HR></HR>
             </div>
             <div class="row">
               <div class="col-lg-6">
@@ -146,35 +146,145 @@
           </div>
       </div>
       <!-- this is for the calculation-->
-      <div class="col-md-12">
-        <section class="sidebar">
-          <div id="connect">
-            <div class="row">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><strong>TOTAL</strong></h3>
-                </div>
-                <div class="panel-body">
-                  <table class="table table-hover" id='calculation-table'>
-                    <thead>
-                      <tr>
-                        <th>some type of calculation</th>       
-                      </tr>
-                    </thead>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+      <div class="row">
+        <div class="col-lg-3">      
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>Total Paintshop Payroll</td>
+                <td>$<div id="totalPaintshopPayroll"></div></td>
+              </tr>
+              <tr>
+                <td>Total Bodyshop Payroll</td>
+                <td>$<div id="totalBodyshopPayroll"></div></td>
+              </tr>
+              <tr>
+                <td>Cost of Paint & Materials</td>
+                <td>$<div id="costOfPaintMaterials"></div></td>
+              </tr>
+            </tbody>
+            </table>
+            
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <th>Vendor</th>
+                <th>$ Amount</th>
+              </tr>
+              <tr>
+                <td>vendor 1</td>
+                <td>$<div id="vendor1"></div></td>
+              </tr>
+              <tr>
+                <td>vendor 2</td>
+                <td>$<div id="vendor2"></div></td>
+              </tr>
+              <tr>
+                <td>vendor 3</td>
+                <td>$<div id="vendor3"></div></td>
+              </tr>
+              <tr>
+                <td>vendor 4</td>
+                <td>$<div id="vendor4"></div></td>
+              </tr>
+              <tr>
+                <td>vendor 5</td>
+                <td>$<div id="vendor5"></div></td>
+              </tr>               
+            </tbody>
+          </table> 
+        </div>
+        
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>Paintshop Labor</td>
+                        <td>$<div id="paintshopLabor"></div></td>
+              </tr>
+              <tr>
+                <td>Bodyshop Labor</td>
+                <td>$<div id="bodyshopLabor"></div></td>
+              </tr>
+              <tr>
+                <td>GP $ Paintshop</td>
+                <td>$<div id="gpDollarPaintshop"></div></td>
+              </tr>
+              <tr>
+                <td>GP % Paintshop</td>
+                <td>$<div id="gpPercentPaintshop"></div></td>
+              </tr>
+              <tr>
+                <td>GP $ Bodyshop</td>
+                <td>$<div id="gpDollarBodyshop"></div></td>
+              </tr>
+              <tr>
+                <td>GP % Bodyshop</td>
+                <td>$<div id="gpPercentBodyshop"></div></td>
+              </tr> 
+              <tr>
+                <td>GP Paint $</td>
+                <td>$<div id="gpPaintDollar"></div></td>
+              </tr>
+              <tr>
+                <td>GP % on P&M</td>
+                <td>$<div id="gpPercentPM"></div></td>
+              </tr>
+              <tr>
+                <td>GP $ on Parts</td>
+                <td>$<div id="gpDollarParts"></div></td>
+              </tr>
+              <tr>
+                <td>GP % on Parts</td>
+                <td>$<div id="gpPercentParts"></div></td>
+              </tr> 
+            </tbody>
+          </table>         
+        </div>
+
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3">
+          <table class="table table-bordered">
+            <tbody>
+              <tr>
+                <td>Cost of Sublet</td>
+                <td>$<div id="costOfSublet"></div></td>
+              </tr>
+              <tr>
+                <td>Sublet $ GP</td>
+                <td>$<div id="subletDollarGP"></div></td>
+              </tr>
+              <tr>
+                <td>Sublet % GP</td>
+                <td>$<div id="subletPercentGP"></div></td>
+              </tr>
+              <tr>
+                <td>Total Sales</td>
+                <td>$<div id="totalSales"></div></td>
+              </tr>
+              <tr>
+                <td>Total $ GP</td>
+                <td>$<div id="totalDollarGP"></div></td>
+              </tr>
+              <tr>
+                <td>Total % GP</td>
+                <td>$<div id="totalPercentGP"></div></td>
+              </tr>               
+            </tbody>
+          </table>
+        </div>
+        <div class="col-lg-1"></div>
       </div>
-    <div class="row">
-      <footer>
-          <div class="container">
-            copyright © 2017 Northwestern Coding Boot Camp
-          </div>
-      </footer>
     </div>
+  </div>
+  <br>
+  <footer>
+      <div class="container">
+        copyright © 2017 Northwestern Coding Boot Camp
+      </div>
+  </footer>
+    
   <!-- firebase -->
   <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
   <script type="text/javascript" src="assets/logic.js"></script>
