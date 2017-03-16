@@ -19,16 +19,6 @@ var config = {
 
 firebase.initializeApp(config);
 
-var carJobs = [];
-
-function getSumLaborWork() {
-	var metalLaborSum = 0;
-
-	for (var i = 0; i < carJobs.length; i++) {
-		carJobs[i].metalLabor
-		metalLaborSum.attr(projMetalLabor)
-	}
-}
 var database = firebase.database();
 
 // 2. Button for adding Employees
@@ -77,6 +67,15 @@ $("#add-job-btn").on("click", function(event) {
   return false;
 });
 
+//counter
+var projectNumberSum= 0;
+var metalLaborSum = 0;
+
+// the sum of all the job
+$("#ro").append(projectNumberSum);
+$("#metalLabor").append(metalLaborSum);
+
+
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
@@ -85,6 +84,10 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   // Store everything into a variable.
   var projNumb = childSnapshot.val().projectNumber;
   var projMetalLabor = childSnapshot.val().metalLabor;
+
+  //computing all the sum 
+  projectNumberSum += projNumb;
+  metalLaborSum += projMetalLabor;
 
 
   // Employee Info
@@ -95,8 +98,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   // // Calculate the total billed rate
   // var empBilled = empMonths * empRate;
   // console.log(empBilled);
-  debugger;
+
   // Add each train's data into the table
   $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td></tr>");
+
+
+
 });
 
