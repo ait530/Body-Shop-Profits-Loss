@@ -136,10 +136,32 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   $("#sublet").text(sumSublet);
   $("#towStorage").text(sumTowAndStorage);
 
+  // 4. Create a way to calculate the sum for all the work
+
+  $("#paintshopLabor").text(sumPaintLabor);
+  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor);
+  $("#gpDollarPaintshop").text(sumPartSales - sumFrameLabor);
+  $("#gpPercentPaintshop").text(something here * 100);
+  
+  // gpDollarBodyshop = ?
+  // GP % Bodyshop = ?
+  // gpPaintDollar = sumPaintAndMaterial - 
+  // gpDollarParts = sumPartSales - sumPartsCost
+  // gpPercentParts = gpDollarParts / sumPartSales  * 100
+  // ////////////////////////////////////////////////////
+  // costOfSublet = sumSublet
+  // subletDollarGP = ?
+  // subletPercentGP = ?
+  // totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
+
+  // totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
+
+  // totalPercentGP = totalDollarGP / totalSales
+
+
+
 });
 
-
-// 4. Create a way to calculate the sum for all the work
 
 
 // Submit button Button
