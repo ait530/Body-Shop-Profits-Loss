@@ -85,7 +85,7 @@ $("#add-job-btn").on("click", function(event) {
   var sumPartsCost= 0;
   var sumPaintAndMaterial= 0;
   var sumSublet= 0;
-  var sumTowAndStorage:= 0
+  var sumTowAndStorage= 0
 
 
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
@@ -112,16 +112,17 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   sumPaintLabor += parseInt(projPaintLabor);
   sumPartSales += parseInt(projPartSales);
   sumPartsCost += parseInt(projPartsCost);
-  vsumPaintAndMaterial += parseInt(projPaintAndMaterial);
+  sumPaintAndMaterial += parseInt(projPaintAndMaterial);
   sumSublet += parseInt(projSublet);
   sumTowAndStorage += parseInt(projTowAndStorage);
-  
+
   // Employee Info
   console.log(projNumb);
   console.log(projMetalLabor);
 
   // Add each train's data into the table
-  $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td></tr>");
+  $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
+  projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
   console.log(sumMetalLabor);
   $("#metalLabor").text(sumMetalLabor);
 
