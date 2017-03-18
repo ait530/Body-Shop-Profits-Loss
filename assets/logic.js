@@ -29,27 +29,27 @@ $("#add-job-btn").on("click", function(event) {
   // Grabs user input
   var projNumb = $("#projNumb-input").val().trim();
 	var projMetalLabor = $("#metalLabor-input").val().trim();
-	// var projFrameLabor = $("#frameLabor-input").val().trim();
-	// var projMechLabor = $("#mechLabor-input").val().trim();
-	// var projPaintLabor = $("#paintLabor-input").val().trim();
-	// var projPartSales = $("#partSales-input").val().trim();
-	// var projPartsCost = $("#partsCost-input").val().trim();
-	// var projPaintAndMaterial = $("#paintAndMaterial-input").val().trim();
-	// var projSublet = $("#sublet-input").val().trim();
-	// var projTowAndStorage = $("#towAndStorage-input").val().trim();
+	var projFrameLabor = $("#frameLabor-input").val().trim();
+	var projMechLabor = $("#mechLabor-input").val().trim();
+	var projPaintLabor = $("#paintLabor-input").val().trim();
+	var projPartSales = $("#partSales-input").val().trim();
+	var projPartsCost = $("#partsCost-input").val().trim();
+	var projPaintAndMaterial = $("#paintAndMaterial-input").val().trim();
+	var projSublet = $("#sublet-input").val().trim();
+	var projTowAndStorage = $("#towAndStorage-input").val().trim();
 
   // Creates local "temporary" object for holding employee data
   	var newCarJob = {
         projectNumber: projNumb,
         metalLabor: projMetalLabor,
-        // frameLabor: projFrameLabor,
-        // mechLabor: projMechLabor,
-        // paintLabor: projPaintLabor,
-        // partSales: projPartSales,
-        // partsCost: projPartsCost,   
-        // paintAndMaterial: projPaintAndMaterial,
-        // sublet: projSublet,
-        // towAndStorage: projTowAndStorage
+        frameLabor: projFrameLabor,
+        mechLabor: projMechLabor,
+        paintLabor: projPaintLabor,
+        partSales: projPartSales,
+        partsCost: projPartsCost,   
+        paintAndMaterial: projPaintAndMaterial,
+        sublet: projSublet,
+        towAndStorage: projTowAndStorage
     }
 
   // Uploads employee data to the database
@@ -63,7 +63,12 @@ $("#add-job-btn").on("click", function(event) {
   // Clears all of the text-boxes
   $("#projNumb-input").val("");
   $("#metalLabor-input").val("");
-  // $("#frameLabor-input").val("");
+  $("#frameLabor-input").val("");
+  $("#mechLabor-input").val("");
+  $("#paintLabor-input").val("");
+  $("#partSales-input").val("");
+  $("#partsCost-input").val("");
+  $("#paintAndMaterial-input").val("");
 
 
   // Prevents moving to new page
@@ -99,13 +104,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 
 // 4. Create a way to calculate the sum for all the work
-
-
-
-// // // the sum of all the job
-// $(".sumJob #metalLabor").text(sumMetalLabor);
-
-
 
 
 // Submit button Button
