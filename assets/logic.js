@@ -142,10 +142,33 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   $("#paintshopLabor").text(sumPaintLabor);
   $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor);
   $("#gpDollarPaintshop").text(sumPartSales - sumFrameLabor);
+  // $("#gpPercentPaintshop").text(something here * 100);
+  // $("#gpDollarBodyshop").text(something);
+  // $("#GP % Bodyshop").text(something here * 100);
+  // $("#gpPaintDollar").text(sumPaintAndMaterial -);
+  $("#gpDollarParts").text(sumPartSales - sumPartsCost);
+  $("#gpPercentParts").text(gpDollarParts / sumPartSales  * 100);
+
+  // ////////////////////////////////////////////////////
+  $("#costOfSublet").sumSublet
+  // subletDollarGP = ?
+  // subletPercentGP = ?
+  // totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
+
+  // totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
+
+  // totalPercentGP = totalDollarGP / totalSales
+
+
+
+});
+
+  $("#paintshopLabor").text(sumPaintLabor);
+  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor);
+  $("#gpDollarPaintshop").text(sumPartSales - sumFrameLabor);
   $("#gpPercentPaintshop").text(something here * 100);
-  
-  // gpDollarBodyshop = ?
-  // GP % Bodyshop = ?
+  // $("#gpDollarBodyshop = ?)
+  // $("gpPercentParts") = ?
   // gpPaintDollar = sumPaintAndMaterial - 
   // gpDollarParts = sumPartSales - sumPartsCost
   // gpPercentParts = gpDollarParts / sumPartSales  * 100
@@ -182,6 +205,11 @@ totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumP
 totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
 
 totalPercentGP = totalDollarGP / totalSales
+
+
+
+
+
 
 
 
