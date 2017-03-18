@@ -26,29 +26,29 @@ $("#add-job-btn").on("click", function(event) {
   event.preventDefault();
 
   // Grabs user input
-    var projNumb = $("#projNumb-input").val().trim();
-  var projMetalLabor = $("#metalLabor-input").val().trim();
-  // var projFrameLabor = $("#frameLabor-input").val().trim();
-  // var projMechLabor = $("#mechLabor-input").val().trim();
-  // var projPaintLabor = $("#paintLabor-input").val().trim();
-  // var projPartSales = $("#partSales-input").val().trim();
-  // var projPartsCost = $("#partsCost-input").val().trim();
-  // var projPaintAndMaterial = $("#paintAndMaterial-input").val().trim();
-  // var projSublet = $("#sublet-input").val().trim();
-  // var projTowAndStorage = $("#towAndStorage-input").val().trim();
+  var projNumb = $("#projNumb-input").val().trim();
+	var projMetalLabor = $("#metalLabor-input").val().trim();
+	var projFrameLabor = $("#frameLabor-input").val().trim();
+	var projMechLabor = $("#mechLabor-input").val().trim();
+	var projPaintLabor = $("#paintLabor-input").val().trim();
+	var projPartSales = $("#partSales-input").val().trim();
+	var projPartsCost = $("#partsCost-input").val().trim();
+	var projPaintAndMaterial = $("#paintAndMaterial-input").val().trim();
+	var projSublet = $("#sublet-input").val().trim();
+	var projTowAndStorage = $("#towAndStorage-input").val().trim();
 
   // Creates local "temporary" object for holding employee data
     var newCarJob = {
         projectNumber: projNumb,
         metalLabor: projMetalLabor,
-        // frameLabor: projFrameLabor,
-        // mechLabor: projMechLabor,
-        // paintLabor: projPaintLabor,
-        // partSales: projPartSales,
-        // partsCost: projPartsCost,   
-        // paintAndMaterial: projPaintAndMaterial,
-        // sublet: projSublet,
-        // towAndStorage: projTowAndStorage
+        frameLabor: projFrameLabor,
+        mechLabor: projMechLabor,
+        paintLabor: projPaintLabor,
+        partSales: projPartSales,
+        partsCost: projPartsCost,   
+        paintAndMaterial: projPaintAndMaterial,
+        sublet: projSublet,
+        towAndStorage: projTowAndStorage
     }
 
   // Uploads employee data to the database
@@ -62,10 +62,20 @@ $("#add-job-btn").on("click", function(event) {
   // Clears all of the text-boxes
   $("#projNumb-input").val("");
   $("#metalLabor-input").val("");
+  $("#frameLabor-input").val("");
+  $("#mechLabor-input").val("");
+  $("#paintLabor-input").val("");
+  $("#partSales-input").val("");
+  $("#partsCost-input").val("");
+  $("#paintAndMaterial-input").val("");
+
 
   // Prevents moving to new page
   return false;
 });
+
+  // //counter
+  var sumMetalLabor= 0;
 
 
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
@@ -86,9 +96,14 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Add each train's data into the table
   $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td></tr>");
+  console.log(sumMetalLabor);
+  $("#metalLabor").text(sumMetalLabor);
+
 });
 
+
 // 4. Create a way to calculate the sum for all the work
+
 
 // Submit button Button
 // <button class="btn btn-primary" id="add-job-btn" type="submit">Submit</button>
@@ -188,10 +203,10 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 //   };
 
 
-
 //counter
 var sumMetalLabor= 0;
 
 // // the sum of all the job
 $(".sumJob #metalLabor").append(sumMetalLabor);
+
 
