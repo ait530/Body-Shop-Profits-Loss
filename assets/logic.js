@@ -26,6 +26,7 @@ $("#add-job-btn").on("click", function(event) {
   event.preventDefault();
 
   // Grabs user input
+  var projDate = $("#date-input").val().trim();
   var projNumb = $("#projNumb-input").val().trim();
 	var projMetalLabor = $("#metalLabor-input").val().trim();
 	var projFrameLabor = $("#frameLabor-input").val().trim();
@@ -38,7 +39,9 @@ $("#add-job-btn").on("click", function(event) {
 	var projTowAndStorage = $("#towAndStorage-input").val().trim();
 
   // Creates local "temporary" object for holding employee data
-    var newCarJob = {
+
+  	var newCarJob = {
+        projectDate: projDate,
         projectNumber: projNumb,
         metalLabor: projMetalLabor,
         frameLabor: projFrameLabor,
@@ -60,6 +63,7 @@ $("#add-job-btn").on("click", function(event) {
  
 
   // Clears all of the text-boxes
+  $("#date-input").val("");
   $("#projNumb-input").val("");
   $("#metalLabor-input").val("");
   $("#frameLabor-input").val("");
@@ -93,6 +97,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   console.log(childSnapshot.val());
 
   // Store everything into a variable.
+  var projDate = childSnapshot.val().projectDate;
   var projNumb = childSnapshot.val().projectNumber;
   var projMetalLabor = childSnapshot.val().metalLabor;
   var projFrameLabor = childSnapshot.val().frameLabor;
@@ -182,7 +187,8 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // totalPercentGP = totalDollarGP / totalSales
 
-
+  // date for each job
+  // var date = moment.unix(empStart).format("MM/DD/YY");
 
 // };
 
@@ -212,6 +218,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 
 
+// 6. grab the weekly bill each week --> making a tab for them to revisit later 
+// Current Time
+  // var m = moment();
+
+  // var noTime = $.fullCalendar.moment('2014-05-01');
 
 
 // Submit button Button
@@ -311,4 +322,8 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 //     initializeCalculator();
 //   };
 
+
+
+  //   var currentTime = moment();
+  //   console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
