@@ -119,11 +119,23 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   console.log(projNumb);
   console.log(projMetalLabor);
 
-  // Add each train's data into the table
+
+  // Add each labor data into the table
+
   $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
   projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
   console.log(sumMetalLabor);
+
+  // Add each sum labor data into the table
   $("#metalLabor").text(sumMetalLabor);
+  $("#frameLabor").text(sumFrameLabor);
+  $("#mechLabor").text(sumMechLabor);
+  $("#paintLabor").text(sumPaintLabor);
+  $("#partSales").text(sumPartSales);
+  $("#partsCost").text(sumPartsCost);
+  $("#paintMaterial").text(sumPaintAndMaterial);
+  $("#sublet").text(sumSublet);
+  $("#towStorage").text(sumTowAndStorage);
 
 });
 
