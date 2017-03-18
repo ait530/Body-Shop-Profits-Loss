@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- We don't need the Style right now-->
 <!--     <link rel="stylesheet" type="text/css" href="assets/style.css"> -->
 </head>
@@ -54,6 +55,10 @@
               <div class="panel-body">
                 <!-- Entry Form -->
                 <form>
+                  <div class="form-group">
+                    <label for="date-input">Start Date (DD/MM/YY - ex: 01/01/89)</label>
+                    <input class="form-control" id="date-input" type="text">
+                  </div>
                   <div class="form-group">
                     <label for="projNumb-input">Project Number</label>
                     <input class="form-control" id="projNumb-input" type="number">
@@ -114,6 +119,7 @@
                 <table class="table table-hover" id='employee-table'>
                   <thead>
                     <tr>
+                      <th>Date</th>
                       <th>Project Number</th>
                       <th>Metal Labor</th>
                       <th>Frame Labor</th>
