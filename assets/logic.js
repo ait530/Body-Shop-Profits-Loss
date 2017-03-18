@@ -150,7 +150,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   $("#gpPercentParts").text(gpDollarParts / sumPartSales  * 100);
 
   // ////////////////////////////////////////////////////
-  $("#costOfSublet").sumSublet
+  // $("#costOfSublet").sumSublet
   // subletDollarGP = ?
   // subletPercentGP = ?
   // totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
@@ -163,10 +163,10 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 });
 
-  $("#paintshopLabor").text(sumPaintLabor);
-  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor);
-  $("#gpDollarPaintshop").text(sumPartSales - sumFrameLabor);
-  $("#gpPercentPaintshop").text(something here * 100);
+  // $("#paintshopLabor").text(sumPaintLabor);
+  // $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor);
+  // $("#gpDollarPaintshop").text(sumPartSales - sumFrameLabor);
+  // $("#gpPercentPaintshop").text(something here * 100);
   // $("#gpDollarBodyshop = ?)
   // $("gpPercentParts") = ?
   // gpPaintDollar = sumPaintAndMaterial - 
@@ -184,27 +184,28 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 
 
-});
+// };
 
 
-paintShopLabor = sumPaintLabor;
-bodyShopLabor = sumMetalLabor + sumFrameLabor
-gpDollarPaintshop = sumPartSales - sumFrameLabor
-gpPercentPaintshop = ?
-gpDollarBodyshop = ?
-GP % Bodyshop = ?
-gpPaintDollar = sumPaintAndMaterial - 
-gpDollarParts = sumPartSales - sumPartsCost
-gpPercentParts = gpDollarParts / sumPartSales  * 100
-////////////////////////////////////////////////////
-costOfSublet = sumSublet
-subletDollarGP = ?
-subletPercentGP = ?
-totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
 
-totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
+// paintShopLabor = sumPaintLabor;
+// bodyShopLabor = sumMetalLabor + sumFrameLabor
+// gpDollarPaintshop = sumPartSales - sumFrameLabor
+// gpPercentPaintshop = ?
+// gpDollarBodyshop = ?
+// GP % Bodyshop = ?
+// gpPaintDollar = sumPaintAndMaterial - 
+// gpDollarParts = sumPartSales - sumPartsCost
+// gpPercentParts = gpDollarParts / sumPartSales  * 100
+// ////////////////////////////////////////////////////
+// costOfSublet = sumSublet
+// subletDollarGP = ?
+// subletPercentGP = ?
+// totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
 
-totalPercentGP = totalDollarGP / totalSales
+// totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
+
+// totalPercentGP = totalDollarGP / totalSales
 
 
 
