@@ -11,7 +11,7 @@
 
 // 1. Initialize Firebase
 var config = {
-   	apiKey: "AIzaSyDyS6-PlzGVgp1Fyfr0Qn8bcGHICyEDiPM",
+  apiKey: "AIzaSyDyS6-PlzGVgp1Fyfr0Qn8bcGHICyEDiPM",
 	authDomain: "autoshop-project.firebaseapp.com",
 	databaseURL: "https://autoshop-project.firebaseio.com",
 	storageBucket: "autoshop-project.appspot.com",
@@ -27,7 +27,7 @@ $("#add-job-btn").on("click", function(event) {
   event.preventDefault();
 
   // Grabs user input
-  	var projNumb = $("#projNumb-input").val().trim();
+  var projNumb = $("#projNumb-input").val().trim();
 	var projMetalLabor = $("#metalLabor-input").val().trim();
 	// var projFrameLabor = $("#frameLabor-input").val().trim();
 	// var projMechLabor = $("#mechLabor-input").val().trim();
@@ -63,6 +63,8 @@ $("#add-job-btn").on("click", function(event) {
   // Clears all of the text-boxes
   $("#projNumb-input").val("");
   $("#metalLabor-input").val("");
+  // $("#frameLabor-input").val("");
+
 
   // Prevents moving to new page
   return false;
