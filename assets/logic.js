@@ -68,6 +68,9 @@ $("#add-job-btn").on("click", function(event) {
   return false;
 });
 
+  // //counter
+  var sumMetalLabor= 0;
+
 
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
@@ -87,9 +90,21 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Add each train's data into the table
   $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td></tr>");
+  console.log(sumMetalLabor);
+  $("#metalLabor").text(sumMetalLabor);
+
 });
 
+
 // 4. Create a way to calculate the sum for all the work
+
+
+
+// // // the sum of all the job
+// $(".sumJob #metalLabor").text(sumMetalLabor);
+
+
+
 
 // Submit button Button
 // <button class="btn btn-primary" id="add-job-btn" type="submit">Submit</button>
@@ -187,12 +202,4 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 //     // Call initializeCalculater so we can set the state of our app
 //     initializeCalculator();
 //   };
-
-
-//counter
-var sumMetalLabor= 0;
-
-// // the sum of all the job
-$(".sumJob #metalLabor").append(sumMetalLabor);
-
 
