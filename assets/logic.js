@@ -142,6 +142,26 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 // 4. Create a way to calculate the sum for all the work
 
+paintShopLabor = sumPaintLabor;
+bodyShopLabor = sumMetalLabor + sumFrameLabor
+gpDollarPaintshop = sumPartSales - sumFrameLabor
+gpPercentPaintshop = ?
+gpDollarBodyshop = ?
+GP % Bodyshop = ?
+gpPaintDollar = sumPaintAndMaterial - 
+gpDollarParts = sumPartSales - sumPartsCost
+gpPercentParts = gpDollarParts / sumPartSales  * 100
+////////////////////////////////////////////////////
+costOfSublet = sumSublet
+subletDollarGP = ?
+subletPercentGP = ?
+totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
+
+totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
+
+totalPercentGP = totalDollarGP / totalSales
+
+
 
 // Submit button Button
 // <button class="btn btn-primary" id="add-job-btn" type="submit">Submit</button>
@@ -239,12 +259,5 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 //     // Call initializeCalculater so we can set the state of our app
 //     initializeCalculator();
 //   };
-
-
-//counter
-var sumMetalLabor= 0;
-
-// // the sum of all the job
-$(".sumJob #metalLabor").append(sumMetalLabor);
 
 
