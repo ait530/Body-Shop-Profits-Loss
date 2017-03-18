@@ -10,11 +10,11 @@
 
 // 1. Initialize Firebase
 var config = {
-    apiKey: "AIzaSyDyS6-PlzGVgp1Fyfr0Qn8bcGHICyEDiPM",
-  authDomain: "autoshop-project.firebaseapp.com",
-  databaseURL: "https://autoshop-project.firebaseio.com",
-  storageBucket: "autoshop-project.appspot.com",
-  messagingSenderId: "92989190932"
+  apiKey: "AIzaSyDyS6-PlzGVgp1Fyfr0Qn8bcGHICyEDiPM",
+	authDomain: "autoshop-project.firebaseapp.com",
+	databaseURL: "https://autoshop-project.firebaseio.com",
+	storageBucket: "autoshop-project.appspot.com",
+	messagingSenderId: "92989190932"
 };
 
 firebase.initializeApp(config);
@@ -89,8 +89,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 });
 
 // 4. Create a way to calculate the sum for all the work
-
-
 
 // Submit button Button
 // <button class="btn btn-primary" id="add-job-btn" type="submit">Submit</button>
@@ -190,8 +188,10 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 //   };
 
 
-// //counter
+
+//counter
 var sumMetalLabor= 0;
 
 // // the sum of all the job
 $(".sumJob #metalLabor").append(sumMetalLabor);
+
