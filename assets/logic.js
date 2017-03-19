@@ -39,6 +39,7 @@ $("#add-job-btn").on("click", function(event) {
 	var projPaintAndMaterial = $("#paintAndMaterial-input").val().trim();
 	var projSublet = $("#sublet-input").val().trim();
 	var projTowAndStorage = $("#towAndStorage-input").val().trim();
+  var projPaintPay = $("#paintPay-input").val().trim();
 
   // Creates local "temporary" object for holding employee data
 	var newCarJob = {
@@ -52,15 +53,15 @@ $("#add-job-btn").on("click", function(event) {
       partsCost: projPartsCost,   
       paintAndMaterial: projPaintAndMaterial,
       sublet: projSublet,
-      towAndStorage: projTowAndStorage
+      towAndStorage: projTowAndStorage,
+      paintPay: projPaintPay
   }
 
   // Uploads employee data to the database
   database.ref().push(newCarJob);
 
   // Logs everything to console
-  console.log(newCarJob.projectNumber);
-  console.log(newCarJob.metalLabor);
+  console.log(newCarJob);
  
 
   // Clears all of the text-boxes
@@ -75,6 +76,7 @@ $("#add-job-btn").on("click", function(event) {
   $("#paintAndMaterial-input").val("");
   $("#sublet-input").val("");
   $("#towAndStorage-input").val("");
+  $("#paintPay-input").val("");
 
   // Prevents moving to new page
   return false;
@@ -89,9 +91,8 @@ $("#add-job-btn").on("click", function(event) {
   var sumPartsCost= 0;
   var sumPaintAndMaterial= 0;
   var sumSublet= 0;
-  var sumTowAndStorage= 0
-
-  //Need to add paintShopPay, this would be a user input?
+  var sumTowAndStorage= 0;
+  var sumPaintPay= 0;
 
 
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
@@ -111,6 +112,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var projPaintAndMaterial = childSnapshot.val().paintAndMaterial;
   var projSublet = childSnapshot.val().sublet;
   var projTowAndStorage = childSnapshot.val().towAndStorage;
+  var projPaintPay = childSnapshot.val().paintPay;
 
   //Computing all the sums 
   sumMetalLabor += parseInt(projMetalLabor);
@@ -122,16 +124,19 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   sumPaintAndMaterial += parseInt(projPaintAndMaterial);
   sumSublet += parseInt(projSublet);
   sumTowAndStorage += parseInt(projTowAndStorage);
+  sumPaintPay += parseInt(projPaintPay);
 
   // Employee Info
   console.log(projNumb);
   console.log(projMetalLabor);
+  console.log(projTowAndStorage);
+  console.log(projPaintPay);
 
 
   // Add each labor data into the table
   $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
-  projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
-  console.log(sumMetalLabor);
+  projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>" + projPaintPay);
+  
 
   // Add each sum labor data into the table
   $("#metalLabor").text(sumMetalLabor);
@@ -143,12 +148,12 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   $("#paintMaterial").text(sumPaintAndMaterial);
   $("#sublet").text(sumSublet);
   $("#towStorage").text(sumTowAndStorage);
+  $("#paintPay").text(sumPaintPay);
 
   // 4. Create a way to calculate the sum for all the work
-
   $("#paintshopLabor").text(sumPaintLabor);
   $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor);
-  // $("#gpDollarPaintshop").text(sumPaintLabor - totalPaintPay);
+  $("#gpDollarPaintshop").text(sumPaintLabor - projPaintPay);
   // $("#gpPercentPaintshop").text(gpDollarPaintshop/paintshopLabor * 100);
   // $("#gpDollarBodyshop").text(bodyshopLabor - totalBodyShopPay);
   // $("#GP % Bodyshop").text(gpDollarBodyshop/bodyShopLabor * 100);
@@ -158,9 +163,9 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   // $("#gpPercentParts").text(gpDollarParts / sumPartSales * 100);
 
 
-  //////////////////////////////////////////
-  // Sublet & Total Equations///////////////
-  //////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////
+  /////////////////Sublet & Total Equations////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////
   // $("#costOfSublet").sumSublet
   // subletDollarGP = ?
   // subletPercentGP = ?
@@ -170,10 +175,16 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // totalPercentGP = totalDollarGP / totalSales
 
-
-
 });
 
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+/////////// Firebase Calculator Code from Class below://////////////////////////
+////////////////////////////////////////////////////////////////////////////////
   // $("#paintshopLabor").text(sumPaintLabor);
   // $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor);
   // $("#gpDollarPaintshop").text(sumPartSales - sumFrameLabor);
