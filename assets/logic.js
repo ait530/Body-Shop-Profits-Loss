@@ -17,15 +17,17 @@ var config = {
 	messagingSenderId: "92989190932"
 };
 
+// Creates and initializes a Firebase app instance
 firebase.initializeApp(config);
 
+// Gets the Database service for the default app or a given app
 var database = firebase.database();
 
-// 2. Button for adding Employees
+// 2. Submit Button for adding Employees
 $("#add-job-btn").on("click", function(event) {
   event.preventDefault();
 
-  // Grabs user input
+  // Grabs user input elements and reduces excess space
   var projDate = $("#date-input").val().trim();
   var projNumb = $("#projNumb-input").val().trim();
 	var projMetalLabor = $("#metalLabor-input").val().trim();
@@ -39,20 +41,19 @@ $("#add-job-btn").on("click", function(event) {
 	var projTowAndStorage = $("#towAndStorage-input").val().trim();
 
   // Creates local "temporary" object for holding employee data
-
-  	var newCarJob = {
-        projectDate: projDate,
-        projectNumber: projNumb,
-        metalLabor: projMetalLabor,
-        frameLabor: projFrameLabor,
-        mechLabor: projMechLabor,
-        paintLabor: projPaintLabor,
-        partSales: projPartSales,
-        partsCost: projPartsCost,   
-        paintAndMaterial: projPaintAndMaterial,
-        sublet: projSublet,
-        towAndStorage: projTowAndStorage
-    }
+	var newCarJob = {
+      projectDate: projDate,
+      projectNumber: projNumb,
+      metalLabor: projMetalLabor,
+      frameLabor: projFrameLabor,
+      mechLabor: projMechLabor,
+      paintLabor: projPaintLabor,
+      partSales: projPartSales,
+      partsCost: projPartsCost,   
+      paintAndMaterial: projPaintAndMaterial,
+      sublet: projSublet,
+      towAndStorage: projTowAndStorage
+  }
 
   // Uploads employee data to the database
   database.ref().push(newCarJob);
@@ -79,7 +80,7 @@ $("#add-job-btn").on("click", function(event) {
   return false;
 });
 
-  // //counter
+  //counter
   var sumMetalLabor= 0;
   var sumFrameLabor= 0;
   var sumMechLabor= 0;
@@ -109,7 +110,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   var projSublet = childSnapshot.val().sublet;
   var projTowAndStorage = childSnapshot.val().towAndStorage;
 
-  //computing all the sum 
+  //Computing all the sums 
   sumMetalLabor += parseInt(projMetalLabor);
   sumFrameLabor += parseInt(projFrameLabor);
   sumMechLabor += parseInt(projMechLabor);
@@ -126,7 +127,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 
   // Add each labor data into the table
-
   $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
   projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
   console.log(sumMetalLabor);
