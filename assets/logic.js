@@ -82,6 +82,51 @@ $("#add-job-btn").on("click", function(event) {
   return false;
 });
 
+// //counter
+var sumMetalLabor= 0;
+var sumFrameLabor= 0;
+var sumMechLabor= 0;
+var sumPaintLabor= 0;
+var sumPartSales= 0;
+var sumPartsCost= 0;
+var sumPaintAndMaterial= 0;
+var sumSublet= 0;
+var sumTowAndStorage= 0;
+var sumPaintPay= 0;
+var lastJob;
+// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey) {
+  debugger;
+  lastJob = childSnapshot.val();
+  console.log(lastJob);
+  var jobToAdd = lastJob.newCarJob;
+
+
+  // Panel 3: Store everything into a variable.
+  projDate = jobToAdd.projectDate;
+  var projNumb = jobToAdd.projectNumber;
+  var projMetalLabor = jobToAdd.metalLabor;
+  var projFrameLabor = jobToAdd.frameLabor;
+  var projMechLabor = jobToAdd.mechLabor;
+  var projPaintLabor = jobToAdd.paintLabor;
+  var projPartSales = jobToAdd.partSales;
+  var projPartsCost = jobToAdd.partsCost;
+  var projPaintAndMaterial = jobToAdd.paintAndMaterial;
+  var projSublet = jobToAdd.sublet;
+  var projTowAndStorage = jobToAdd.towAndStorage;
+  var projPaintPay = jobToAdd.paintPay;
+
+  console.log(projNumb);
+
+
+  $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
+  projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
+  console.log(sumMetalLabor);
+});
+
+
+
+
 
 $("#add-total-btn").on("click", function(event) {
   event.preventDefault();
@@ -101,13 +146,29 @@ $("#add-total-btn").on("click", function(event) {
 
   database.ref('managerTotalWork').push({
     managerTotalWork
-  });
+  })
 
 
   $("#totalPaintshopPayroll-input").val("");
   $("#totalBodyshopPayroll-input").val("");
 
 });
+
+
+
+var managerJob;
+// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+database.ref('managerTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
+  managerJob = childSnapshot.val();
+  console.log(managerJob);
+  var managerToAdd = managerJob.managerTotalWork;
+
+  // Panel 1
+  var managerInputPaintPayroll = managerToAdd.managerPaintPay;
+  var managerInputBodyshopPayroll = managerToAdd.managerBodyShopPay;
+  
+});
+
 
 
 
@@ -135,6 +196,7 @@ $("#add-vendor-btn").on("click", function(event) {
 
   }
 
+
   // database.ref().push(vendorTotalWork);
   database.ref('vendorTotalWork').push({
     vendorTotalWork
@@ -149,124 +211,93 @@ $("#add-vendor-btn").on("click", function(event) {
 });
 
 
-//counter
-var sumMetalLabor= 0;
-var sumFrameLabor= 0;
-var sumMechLabor= 0;
-var sumPaintLabor= 0;
-var sumPartSales= 0;
-var sumPartsCost= 0;
-var sumPaintAndMaterial= 0;
-var sumSublet= 0;
-var sumTowAndStorage= 0;
-var sumPaintPay= 0;
- 
-var lastJob;
-var projNumb= 0;
-// database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+var vendorJob;
 
-//   });
-
-
-
-
-// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
-database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey) {
-  debugger;
-  lastJob = childSnapshot.val();
-  console.log(lastJob);
-  var jobToAdd = lastJob.newCarJob;
-
-  // Panel 1
-  // var managerInputPaintPayroll = childSnapshot.val().managerPaintPay;
-  // var managerInputBodyshopPayroll = childSnapshot.val().managerBodyShopPay;
+database.ref('vendorTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
+  vendorJob = childSnapshot.val();
+  console.log(vendorJob);
+  var vendorToAdd = vendorJob.vendorTotalWork;
 
   // // Panel 2
-  // var managerInputVendor1 = childSnapshot.val().vendor1;
-  // var managerInputVendor2 = childSnapshot.val().vendor2;
-  // var managerInputVendor3 = childSnapshot.val().vendor3;
-  // var managerInputVendor4 = childSnapshot.val().vendor4;
-  // var managerInputVendor5 = childSnapshot.val().vendor5;
+  var managerInputVendor1 = vendorToAdd.vendor1;
+  var managerInputVendor2 = vendorToAdd.vendor2;
+  var managerInputVendor3 = vendorToAdd.vendor3;
+  var managerInputVendor4 = vendorToAdd.vendor4;
+  var managerInputVendor5 = vendorToAdd.vendor5;
+  
+});
 
-  // Panel 3: Store everything into a variable.
-  projDate = jobToAdd.projectDate;
-  var projNumb = jobToAdd.projectNumber;
-  var projMetalLabor = jobToAdd.metalLabor;
-  var projFrameLabor = jobToAdd.frameLabor;
-  var projMechLabor = jobToAdd.mechLabor;
-  var projPaintLabor = jobToAdd.paintLabor;
-  var projPartSales = jobToAdd.partSales;
-  var projPartsCost = jobToAdd.partsCost;
-  var projPaintAndMaterial = jobToAdd.paintAndMaterial;
-  var projSublet = jobToAdd.sublet;
-  var projTowAndStorage = jobToAdd.towAndStorage;
-  var projPaintPay = jobToAdd.paintPay;
 
-  console.log(projNumb);
 
-  // //Computing all the sums 
-  // sumMetalLabor += parseInt(projMetalLabor);
-  // sumFrameLabor += parseInt(projFrameLabor);
-  // sumMechLabor += parseInt(projMechLabor);
-  // sumPaintLabor += parseInt(projPaintLabor);
-  // sumPartSales += parseInt(projPartSales);
-  // sumPartsCost += parseInt(projPartsCost);
-  // sumPaintAndMaterial += parseInt(projPaintAndMaterial);
-  // sumSublet += parseInt(projSublet);
-  // sumTowAndStorage += parseInt(projTowAndStorage);
-  // sumPaintPay += parseInt(projPaintPay);
+
+
+
+
+//   console.log(projNumb);
+
+//   // //Computing all the sums 
+//   // sumMetalLabor += parseInt(projMetalLabor);
+//   // sumFrameLabor += parseInt(projFrameLabor);
+//   // sumMechLabor += parseInt(projMechLabor);
+//   // sumPaintLabor += parseInt(projPaintLabor);
+//   // sumPartSales += parseInt(projPartSales);
+//   // sumPartsCost += parseInt(projPartsCost);
+//   // sumPaintAndMaterial += parseInt(projPaintAndMaterial);
+//   // sumSublet += parseInt(projSublet);
+//   // sumTowAndStorage += parseInt(projTowAndStorage);
+//   // sumPaintPay += parseInt(projPaintPay);
   
 
 
-  $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
-  projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
-  console.log(sumMetalLabor);
+//   $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
+//   projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
+//   console.log(sumMetalLabor);
 
-  // Add each labor data into the table
-
-
-
-
-  // Add each sum labor data into the table
-  $("#metalLabor").text(sumMetalLabor);
-  $("#frameLabor").text(sumFrameLabor);
-  $("#mechLabor").text(sumMechLabor);
-  $("#paintLabor").text(sumPaintLabor);
-  $("#partSales").text(sumPartSales);
-  $("#partsCost").text(sumPartsCost);
-  $("#paintMaterial").text(sumPaintAndMaterial);
-  $("#sublet").text(sumSublet);
-  $("#towStorage").text(sumTowAndStorage);
-  $("#paintPay").text(sumPaintPay);
-
-
-  // // 4. Create a way to calculate the sum for all the work  
-
-  $("#paintshopLabor").text(sumPaintLabor);
-  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
-  // $("#gpDollarPaintshop").text(sumPaintLabor + div for total paintshop payroll); // we need work on 
-  // $("#gpPercentPaintshop").text((sumPaintLabor + div for total paintshop payroll)/ sumPaintLabor * 100);
-  // $("#gpDollarBodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - totalBodyShopPayroll;
-  // $("#GP % Bodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - totalBodyShopPayroll)/paintShopBodyLabor * 100);
-  // $("#gpPaintDollar").text(sumPaintAndMaterial -);
-  $("#gpDollarParts").text(sumPartSales - sumPartsCost);
-  $("#gpPercentParts").text(gpDollarParts / sumPartSales  * 100);
-
-
-  // // ////////////////////////////////////////////////////
+//   // Add each labor data into the table
 
 
 
-  // $("#costOfSublet").sumSublet
-  // subletDollarGP = ?
-  // subletPercentGP = ?
-  // totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
 
-  // totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
+//   // Add each sum labor data into the table
+//   $("#metalLabor").text(sumMetalLabor);
+//   $("#frameLabor").text(sumFrameLabor);
+//   $("#mechLabor").text(sumMechLabor);
+//   $("#paintLabor").text(sumPaintLabor);
+//   $("#partSales").text(sumPartSales);
+//   $("#partsCost").text(sumPartsCost);
+//   $("#paintMaterial").text(sumPaintAndMaterial);
+//   $("#sublet").text(sumSublet);
+//   $("#towStorage").text(sumTowAndStorage);
+//   $("#paintPay").text(sumPaintPay);
 
-  // totalPercentGP = totalDollarGP / totalSales
 
-});
+//   // // 4. Create a way to calculate the sum for all the work  
+
+//   $("#paintshopLabor").text(sumPaintLabor);
+//   $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
+//   // $("#gpDollarPaintshop").text(sumPaintLabor + div for total paintshop payroll); // we need work on 
+//   // $("#gpPercentPaintshop").text((sumPaintLabor + div for total paintshop payroll)/ sumPaintLabor * 100);
+//   // $("#gpDollarBodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - totalBodyShopPayroll;
+//   // $("#GP % Bodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - totalBodyShopPayroll)/paintShopBodyLabor * 100);
+//   // $("#gpPaintDollar").text(sumPaintAndMaterial -);
+//   $("#gpDollarParts").text(sumPartSales - sumPartsCost);
+//   $("#gpPercentParts").text(gpDollarParts / sumPartSales  * 100);
+
+
+//   // // ////////////////////////////////////////////////////
+
+
+
+//   // $("#costOfSublet").sumSublet
+//   // subletDollarGP = ?
+//   // subletPercentGP = ?
+//   // totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
+
+//   // totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
+
+//   // totalPercentGP = totalDollarGP / totalSales
+
+// // });
 
 
 
