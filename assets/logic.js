@@ -138,8 +138,16 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   console.log(childSnapshot.val());
 
   // Panel 1
+  var managerInputPaintPayroll = childSnapshot.val().managerPaintPay;
+  var managerInputBodyshopPayroll = childSnapshot.val().managerBodyShopPay;
+
 
   // Panel 2
+  var managerInputVendor1 = childSnapshot.val().vendor1;
+  var managerInputVendor2 = childSnapshot.val().vendor2;
+  var managerInputVendor3 = childSnapshot.val().vendor3;
+  var managerInputVendor4 = childSnapshot.val().vendor4;
+  var managerInputVendor5 = childSnapshot.val().vendor5;
 
   // Panel 3: Store everything into a variable.
   var projDate = childSnapshot.val().projectDate;
@@ -191,15 +199,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   $("#paintPay").text(sumPaintPay);
 
 
-  // 4. Create a way to calculate the sum for all the work   
-
-    //panel 1
-
-    //panel 2 
-
-
-
-    //panel 3 
+  // 4. Create a way to calculate the sum for all the work  
 
   $("#paintshopLabor").text(sumPaintLabor);
   $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
