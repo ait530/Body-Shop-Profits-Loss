@@ -47,7 +47,7 @@ $("#add-job-btn").on("click", function(event) {
   var managerInputBodyshopPayroll = $("#totalBodyshopPayroll-input").val().trim();
 
 
-  //grabs vendors input 
+  //grabs manager vendors input 
 
   var managerInputVendor1 = $("#vendor1-input").val().trim();
   var managerInputVendor2 = $("#vendor2-input").val().trim();
@@ -70,21 +70,36 @@ $("#add-job-btn").on("click", function(event) {
     paintAndMaterial: projPaintAndMaterial,
     sublet: projSublet,
     towAndStorage: projTowAndStorage,
-    // paintPay: projPaintPay //need to ask aaron
+    
   }
 
   // Creates local "temporary" object for holding manager input data
 
   var managerTotalWork = {
-    
+    managerPaintPay: managerInputPaintPayroll,
+    managerBodyShopPay: managerInputBodyshopPayroll
   }
 
-  // Uploads employee data to the database
-  database.ref().push(newCarJob);
 
+  // Creates local "temporary" object for holding vendor input data
+
+ var vendorTotalWork = {
+    vendor1: managerInputVendor1,
+    vendor2: managerInputVendor2,
+    vendor3: managerInputVendor3,
+    vendor4: managerInputVendor4,
+    vendor5: managerInputVendor5
+
+  }
+  
+  // Uploads employee and manager data to the database
+  database.ref().push(newCarJob);
+  database.ref().push(managerTotalWork);
+  database.ref().push(vendorTotalWork);
   // Logs everything to console
   console.log(newCarJob);
- 
+  console.log(managerTotalWork);
+  console.log(vendorTotalWork); 
 
   // Clears all of the text-boxes
   $("#date-input").val("");
@@ -122,7 +137,11 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   console.log(childSnapshot.val());
 
-  // Store everything into a variable.
+  // Panel 1
+
+  // Panel 2
+
+  // Panel 3: Store everything into a variable.
   var projDate = childSnapshot.val().projectDate;
   var projNumb = childSnapshot.val().projectNumber;
   var projMetalLabor = childSnapshot.val().metalLabor;
@@ -147,12 +166,8 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   sumSublet += parseInt(projSublet);
   sumTowAndStorage += parseInt(projTowAndStorage);
   sumPaintPay += parseInt(projPaintPay);
+  
 
-  // Employee Info
-  console.log(projNumb);
-  console.log(projMetalLabor);
-  console.log(projTowAndStorage);
-  console.log(projPaintPay);
 
 
   // Add each labor data into the table
@@ -188,7 +203,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   $("#paintshopLabor").text(sumPaintLabor);
   $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
-  $("#gpDollarPaintshop").text(sumPaintLabor + ); // we need work on 
+  // $("#gpDollarPaintshop").text(sumPaintLabor + ); // we need work on 
   // $("#gpPercentPaintshop").text(something here * 100);
   // $("#gpDollarBodyshop").text(something);
   // $("#GP % Bodyshop").text(something here * 100);
