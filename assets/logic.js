@@ -199,19 +199,19 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   $("#paintPay").text(sumPaintPay);
 
 
-  // 4. Create a way to calculate the sum for all the work  
+  // // 4. Create a way to calculate the sum for all the work  
 
-  $("#paintshopLabor").text(sumPaintLabor);
-  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
-  // $("#gpDollarPaintshop").text(sumPaintLabor + ); // we need work on 
-  // $("#gpPercentPaintshop").text(something here * 100);
-  // $("#gpDollarBodyshop").text(something);
-  // $("#GP % Bodyshop").text(something here * 100);
-  // $("#gpPaintDollar").text(sumPaintAndMaterial -);
-  $("#gpDollarParts").text(sumPartSales - sumPartsCost);
-  $("#gpPercentParts").text(gpDollarParts / sumPartSales  * 100);
+  // $("#paintshopLabor").text(sumPaintLabor);
+  // $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
+  // // $("#gpDollarPaintshop").text(sumPaintLabor + ); // we need work on 
+  // // $("#gpPercentPaintshop").text(something here * 100);
+  // // $("#gpDollarBodyshop").text(something);
+  // // $("#GP % Bodyshop").text(something here * 100);
+  // // $("#gpPaintDollar").text(sumPaintAndMaterial -);
+  // $("#gpDollarParts").text(sumPartSales - sumPartsCost);
+  // $("#gpPercentParts").text(gpDollarParts / sumPartSales  * 100);
 
-  // ////////////////////////////////////////////////////
+  // // ////////////////////////////////////////////////////
 
 
 
@@ -226,5 +226,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 });
 
+$("#paintshopLabor").text(sumPaintLabor);
+$("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
 
 
