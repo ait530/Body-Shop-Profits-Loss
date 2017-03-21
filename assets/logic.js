@@ -127,7 +127,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Add each labor data into the table
 
-  $("#employee-table").append("<tr><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
+  $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
   projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
   console.log(sumMetalLabor);
 
@@ -145,7 +145,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   // 4. Create a way to calculate the sum for all the work
 
   $("#paintshopLabor").text(sumPaintLabor);
-  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor);
+  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
   $("#gpDollarPaintshop").text(sumPartSales - sumFrameLabor);
   // $("#gpPercentPaintshop").text(something here * 100);
   // $("#gpDollarBodyshop").text(something);
