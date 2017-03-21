@@ -76,7 +76,7 @@ $("#add-job-btn").on("click", function(event) {
   $("#paintAndMaterial-input").val("");
   $("#sublet-input").val("");
   $("#towAndStorage-input").val("");
-  $("#paintPay-input").val("");
+
 
   // Prevents moving to new page
   return false;
@@ -149,70 +149,82 @@ $("#add-vendor-btn").on("click", function(event) {
 });
 
 
-  //counter
-  var sumMetalLabor= 0;
-  var sumFrameLabor= 0;
-  var sumMechLabor= 0;
-  var sumPaintLabor= 0;
-  var sumPartSales= 0;
-  var sumPartsCost= 0;
-  var sumPaintAndMaterial= 0;
-  var sumSublet= 0;
-  var sumTowAndStorage= 0;
-  var sumPaintPay= 0;
+//counter
+var sumMetalLabor= 0;
+var sumFrameLabor= 0;
+var sumMechLabor= 0;
+var sumPaintLabor= 0;
+var sumPartSales= 0;
+var sumPartsCost= 0;
+var sumPaintAndMaterial= 0;
+var sumSublet= 0;
+var sumTowAndStorage= 0;
+var sumPaintPay= 0;
+ 
+var lastJob;
+var projNumb= 0;
+// database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+//   });
+
+
 
 
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
-database.ref().on("child_added", function(childSnapshot, prevChildKey) {
-
-  console.log(childSnapshot.val());
+database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey) {
+  debugger;
+  lastJob = childSnapshot.val();
+  console.log(lastJob);
+  var jobToAdd = lastJob.newCarJob;
 
   // Panel 1
-  var managerInputPaintPayroll = childSnapshot.val().managerPaintPay;
-  var managerInputBodyshopPayroll = childSnapshot.val().managerBodyShopPay;
+  // var managerInputPaintPayroll = childSnapshot.val().managerPaintPay;
+  // var managerInputBodyshopPayroll = childSnapshot.val().managerBodyShopPay;
 
-  // Panel 2
-  var managerInputVendor1 = childSnapshot.val().vendor1;
-  var managerInputVendor2 = childSnapshot.val().vendor2;
-  var managerInputVendor3 = childSnapshot.val().vendor3;
-  var managerInputVendor4 = childSnapshot.val().vendor4;
-  var managerInputVendor5 = childSnapshot.val().vendor5;
+  // // Panel 2
+  // var managerInputVendor1 = childSnapshot.val().vendor1;
+  // var managerInputVendor2 = childSnapshot.val().vendor2;
+  // var managerInputVendor3 = childSnapshot.val().vendor3;
+  // var managerInputVendor4 = childSnapshot.val().vendor4;
+  // var managerInputVendor5 = childSnapshot.val().vendor5;
 
   // Panel 3: Store everything into a variable.
-  var projDate = childSnapshot.val().projectDate;
-  var projNumb = childSnapshot.val().projectNumber;
-  var projMetalLabor = childSnapshot.val().metalLabor;
-  var projFrameLabor = childSnapshot.val().frameLabor;
-  var projMechLabor = childSnapshot.val().mechLabor;
-  var projPaintLabor = childSnapshot.val().paintLabor;
-  var projPartSales = childSnapshot.val().partSales;
-  var projPartsCost = childSnapshot.val().partsCost;
-  var projPaintAndMaterial = childSnapshot.val().paintAndMaterial;
-  var projSublet = childSnapshot.val().sublet;
-  var projTowAndStorage = childSnapshot.val().towAndStorage;
-  var projPaintPay = childSnapshot.val().paintPay;
+  projDate = jobToAdd.projectDate;
+  var projNumb = jobToAdd.projectNumber;
+  var projMetalLabor = jobToAdd.metalLabor;
+  var projFrameLabor = jobToAdd.frameLabor;
+  var projMechLabor = jobToAdd.mechLabor;
+  var projPaintLabor = jobToAdd.paintLabor;
+  var projPartSales = jobToAdd.partSales;
+  var projPartsCost = jobToAdd.partsCost;
+  var projPaintAndMaterial = jobToAdd.paintAndMaterial;
+  var projSublet = jobToAdd.sublet;
+  var projTowAndStorage = jobToAdd.towAndStorage;
+  var projPaintPay = jobToAdd.paintPay;
 
-  //Computing all the sums 
-  sumMetalLabor += parseInt(projMetalLabor);
-  sumFrameLabor += parseInt(projFrameLabor);
-  sumMechLabor += parseInt(projMechLabor);
-  sumPaintLabor += parseInt(projPaintLabor);
-  sumPartSales += parseInt(projPartSales);
-  sumPartsCost += parseInt(projPartsCost);
-  sumPaintAndMaterial += parseInt(projPaintAndMaterial);
-  sumSublet += parseInt(projSublet);
-  sumTowAndStorage += parseInt(projTowAndStorage);
-  sumPaintPay += parseInt(projPaintPay);
+  console.log(projNumb);
+
+  // //Computing all the sums 
+  // sumMetalLabor += parseInt(projMetalLabor);
+  // sumFrameLabor += parseInt(projFrameLabor);
+  // sumMechLabor += parseInt(projMechLabor);
+  // sumPaintLabor += parseInt(projPaintLabor);
+  // sumPartSales += parseInt(projPartSales);
+  // sumPartsCost += parseInt(projPartsCost);
+  // sumPaintAndMaterial += parseInt(projPaintAndMaterial);
+  // sumSublet += parseInt(projSublet);
+  // sumTowAndStorage += parseInt(projTowAndStorage);
+  // sumPaintPay += parseInt(projPaintPay);
   
-
-
-
-  // Add each labor data into the table
 
 
   $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
   projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
   console.log(sumMetalLabor);
+
+  // Add each labor data into the table
+
+
 
 
   // Add each sum labor data into the table
@@ -256,7 +268,5 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
 });
 
-$("#paintshopLabor").text(sumPaintLabor);
-$("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
 
 
