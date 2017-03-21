@@ -42,22 +42,7 @@ $("#add-job-btn").on("click", function(event) {
   var projPaintPay = $("#paintPay-input").val().trim();
 
 
-  //grabs manager input 
-  var managerInputPaintPayroll = $("#totalPaintshopPayroll-input").val().trim();
-  var managerInputBodyshopPayroll = $("#totalBodyshopPayroll-input").val().trim();
-
-
-  //grabs manager vendors input 
-
-  var managerInputVendor1 = $("#vendor1-input").val().trim();
-  var managerInputVendor2 = $("#vendor2-input").val().trim();
-  var managerInputVendor3 = $("#vendor3-input").val().trim();
-  var managerInputVendor4 = $("#vendor4-input").val().trim();
-  var managerInputVendor5 = $("#vendor5-input").val().trim();
-
-
   // Creates local "temporary" object for holding labors data
-
 	var newCarJob = {
     projectDate: projDate,
     projectNumber: projNumb,
@@ -69,37 +54,12 @@ $("#add-job-btn").on("click", function(event) {
     partsCost: projPartsCost,   
     paintAndMaterial: projPaintAndMaterial,
     sublet: projSublet,
-    towAndStorage: projTowAndStorage,
-    
+    towAndStorage: projTowAndStorage, 
   }
 
-  // Creates local "temporary" object for holding manager input data
-
-  var managerTotalWork = {
-    managerPaintPay: managerInputPaintPayroll,
-    managerBodyShopPay: managerInputBodyshopPayroll
-  }
-
-
-  // Creates local "temporary" object for holding vendor input data
-
- var vendorTotalWork = {
-    vendor1: managerInputVendor1,
-    vendor2: managerInputVendor2,
-    vendor3: managerInputVendor3,
-    vendor4: managerInputVendor4,
-    vendor5: managerInputVendor5
-
-  }
-  
   // Uploads employee and manager data to the database
   database.ref().push(newCarJob);
-  database.ref().push(managerTotalWork);
-  database.ref().push(vendorTotalWork);
-  // Logs everything to console
-  console.log(newCarJob);
-  console.log(managerTotalWork);
-  console.log(vendorTotalWork); 
+
 
   // Clears all of the text-boxes
   $("#date-input").val("");
@@ -118,6 +78,65 @@ $("#add-job-btn").on("click", function(event) {
   // Prevents moving to new page
   return false;
 });
+
+
+$("#add-total-btn").on("click", function(event) {
+  event.preventDefault();
+
+  //grabs manager input 
+  var managerInputPaintPayroll = $("#totalPaintshopPayroll-input").val().trim();
+  var managerInputBodyshopPayroll = $("#totalBodyshopPayroll-input").val().trim();
+
+  // Creates local "temporary" object for holding manager input data
+
+  var managerTotalWork = {
+    managerPaintPay: managerInputPaintPayroll,
+    managerBodyShopPay: managerInputBodyshopPayroll
+  }
+
+  database.ref().push(managerTotalWork);
+
+  $("#totalPaintshopPayroll-input").val("");
+  $("#totalBodyshopPayroll-input").val("");
+
+});
+
+
+
+
+$("#add-vendor-btn").on("click", function(event) {
+  event.preventDefault();
+
+
+  //grabs manager vendors input 
+  var managerInputVendor1 = $("#vendor1-input").val().trim();
+  var managerInputVendor2 = $("#vendor2-input").val().trim();
+  var managerInputVendor3 = $("#vendor3-input").val().trim();
+  var managerInputVendor4 = $("#vendor4-input").val().trim();
+  var managerInputVendor5 = $("#vendor5-input").val().trim();
+
+
+  // Creates local "temporary" object for holding vendor input data
+
+ var vendorTotalWork = {
+    vendor1: managerInputVendor1,
+    vendor2: managerInputVendor2,
+    vendor3: managerInputVendor3,
+    vendor4: managerInputVendor4,
+    vendor5: managerInputVendor5
+
+  }
+
+  database.ref().push(vendorTotalWork);
+
+  $("#vendor1-input").val("");
+  $("#vendor2-input").val("");
+  $("#vendor3-input").val("");
+  $("#vendor4-input").val("");
+  $("#vendor5-input").val("");
+  
+});
+
 
   //counter
   var sumMetalLabor= 0;
@@ -140,7 +159,6 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   // Panel 1
   var managerInputPaintPayroll = childSnapshot.val().managerPaintPay;
   var managerInputBodyshopPayroll = childSnapshot.val().managerBodyShopPay;
-
 
   // Panel 2
   var managerInputVendor1 = childSnapshot.val().vendor1;
@@ -203,10 +221,10 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   $("#paintshopLabor").text(sumPaintLabor);
   $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
-  // $("#gpDollarPaintshop").text(sumPaintLabor + ); // we need work on 
-  // $("#gpPercentPaintshop").text(something here * 100);
-  // $("#gpDollarBodyshop").text(something);
-  // $("#GP % Bodyshop").text(something here * 100);
+  // $("#gpDollarPaintshop").text(sumPaintLabor + div for total paintshop payroll); // we need work on 
+  // $("#gpPercentPaintshop").text((sumPaintLabor + div for total paintshop payroll)/ sumPaintLabor * 100);
+  // $("#gpDollarBodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - totalBodyShopPayroll;
+  // $("#GP % Bodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - totalBodyShopPayroll)/paintShopBodyLabor * 100);
   // $("#gpPaintDollar").text(sumPaintAndMaterial -);
   $("#gpDollarParts").text(sumPartSales - sumPartsCost);
   $("#gpPercentParts").text(gpDollarParts / sumPartSales  * 100);
