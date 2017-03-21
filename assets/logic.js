@@ -38,6 +38,17 @@ $("#add-job-btn").on("click", function(event) {
 	var projSublet = $("#sublet-input").val().trim();
 	var projTowAndStorage = $("#towAndStorage-input").val().trim();
 
+
+  //grabs manager input 
+  var managerInputPaintPayroll = $("#totalPaintshopPayroll-input").val().trim();
+  var managerInputBodyshopPayroll = $("#totalBodyshopPayroll-input").val().trim();
+
+
+  //grabs vendors input 
+
+  var projDate = $("#date-input").val().trim();
+
+
   // Creates local "temporary" object for holding employee data
 
 	var newCarJob = {
