@@ -49,25 +49,34 @@ $("#add-job-btn").on("click", function(event) {
 
   //grabs vendors input 
 
-  var projDate = $("#date-input").val().trim();
+  var managerInputVendor1 = $("#vendor1-input").val().trim();
+  var managerInputVendor2 = $("#vendor2-input").val().trim();
+  var managerInputVendor3 = $("#vendor3-input").val().trim();
+  var managerInputVendor4 = $("#vendor4-input").val().trim();
+  var managerInputVendor5 = $("#vendor5-input").val().trim();
 
 
-  // Creates local "temporary" object for holding employee data
+  // Creates local "temporary" object for holding labors data
 
 	var newCarJob = {
-      projectDate: projDate,
-      projectNumber: projNumb,
-      metalLabor: projMetalLabor,
-      frameLabor: projFrameLabor,
-      mechLabor: projMechLabor,
-      paintLabor: projPaintLabor,
-      partSales: projPartSales,
-      partsCost: projPartsCost,   
-      paintAndMaterial: projPaintAndMaterial,
-      sublet: projSublet,
-      towAndStorage: projTowAndStorage,
-      paintPay: projPaintPay
+    projectDate: projDate,
+    projectNumber: projNumb,
+    metalLabor: projMetalLabor,
+    frameLabor: projFrameLabor,
+    mechLabor: projMechLabor,
+    paintLabor: projPaintLabor,
+    partSales: projPartSales,
+    partsCost: projPartsCost,   
+    paintAndMaterial: projPaintAndMaterial,
+    sublet: projSublet,
+    towAndStorage: projTowAndStorage,
+    // paintPay: projPaintPay //need to ask aaron
+  }
 
+  // Creates local "temporary" object for holding manager input data
+
+  var managerTotalWork = {
+    
   }
 
   // Uploads employee data to the database
