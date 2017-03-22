@@ -25,7 +25,7 @@
               <div class="col-lg-6">
                 <h4>Records</h4>
                 <form>
-                  <button>Add New</button>
+                  <button id="add-new-button" class="showbutton">Add New</button>
                 </form>
               </div>
               <div class="col-lg-6">
@@ -44,7 +44,7 @@
       </div>
 
       <!-- form to fill out the bodyshop work-->
-      <div class="col-md-12">
+      <div class="col-md-12 hidden" id="add-new-record">
         <section class="main-section">                
           <div class="row">
             <!-- Add Employee  -->
@@ -120,7 +120,7 @@
                   <thead>
                     <tr>
                       <th>Date</th>
-                      <th>Project Number</th>
+                      <th>RO#</th>
                       <th>Metal Labor</th>
                       <th>Frame Labor</th>
                       <th>Mech Labor</th>
@@ -129,8 +129,7 @@
                       <th>Parts Cost</th>
                       <th>Paint & Materials</th>
                       <th>Sublet</th>
-                      <th>Tow & Storage</th>
-                      <th>Paint Pay</th>             
+                      <th>Tow & Storage</th>            
                     </tr>
                   </thead>
                 </table>
