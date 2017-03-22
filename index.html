@@ -2,14 +2,14 @@
 <html lang="en-us">
 <head>
   <meta charset="UTF-8">
-    <title>Body Shop Profits and Loss</title>
+    <title>Bodyshop Profits and Loss</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- We don't need the Style right now-->
-<!--     <link rel="stylesheet" type="text/css" href="assets/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 <body>
   <div class="row">
@@ -33,8 +33,8 @@
                 <form>
                   <input id="startDate" type="text" name="startDate" placeholder="start date here">
                   <input id="endDate" type="text" name="endDate" placeholder="end date here">
-                  <button>Search</button>
-                  <button>Print</button>
+                  <button class="searchButton">Search</button>
+                  <button onclick="printMe()" class="printButton">Print</button>
                 </form>          
               </div>
             </div>
@@ -154,20 +154,20 @@
       </div>
       <!-- this is for the calculation-->
       <div class="row">
-        <div class="col-lg-3">      
+        <div class="col-lg-4">      
           <table class="table table-bordered">
             <tbody>
               <tr>
-                <td>Total Paintshop Payroll</td>
-                <td>$<input class="form-control" id="totalPaintshopPayroll-input" type="number"></td>
+                <td class="colWidth1">Total Paintshop Payroll</td>
+                <td class="colWidth2"><input class="form-control" id="totalPaintshopPayroll-input" type="number" placeholder="$ 00.00"></td>
               </tr>
               <tr>
                 <td>Total Bodyshop Payroll</td>
-                <td>$<input class="form-control" id="totalBodyshopPayroll-input" type="number"></td>
+                <td><input class="form-control" id="totalBodyshopPayroll-input" type="number" placeholder="$ 00.00"></td>
               </tr>
               <tr>
                 <td>Cost of Paint & Materials</td>
-                <td>$<div id="costOfPaintMaterials"></div></td>
+                <td><div id="costOfPaintMaterials"></div></td>
               </tr>
             </tbody>
             </table>
@@ -178,41 +178,41 @@
           <table class="table table-bordered">
             <tbody>
               <tr>
-                <th>Vendor</th>
-                <th>$ Amount</th>
+                <th class="colWidth1">Vendor</th>
+                <th class="colWidth2">$ Amount</th>
               </tr>
               <tr>
-                <td>vendor 1</td>
-                <td>$<input class="form-control" id="vendor1-input" type="number"></td>
+                <td><input class="form-control" id="vendor1-label" type="text" placeholder="Vendor Name"></td>
+                <td><input class="form-control" id="vendor1-input" type="number" placeholder="$ 00.00"></td>
               </tr>
               <tr>
-                <td>vendor 2</td>
-                <td>$<input class="form-control" id="vendor2-input" type="number"></td>
+                <td><input class="form-control" id="vendor2-label" type="text" placeholder="Vendor Name"></td>
+                <td><input class="form-control" id="vendor2-input" type="number" placeholder="$ 00.00"></td>
               </tr>
               <tr>
-                <td>vendor 3</td>
-                <td>$<input class="form-control" id="vendor3-input" type="number"></td>
+                <td><input class="form-control" id="vendor3-label" type="text" placeholder="Vendor Name"></td>
+                <td><input class="form-control" id="vendor3-input" type="number" placeholder="$ 00.00"></td>
               </tr>
               <tr>
-                <td>vendor 4</td>
-                <td>$<input class="form-control" id="vendor4-input" type="number"></td>
+                <td><input class="form-control" id="vendor4-label" type="text" placeholder="Vendor Name"></td>
+                <td><input class="form-control" id="vendor4-input" type="number" placeholder="$ 00.00"></td>
               </tr>
               <tr>
-                <td>vendor 5</td>
-                <td>$<input class="form-control" id="vendor5-input" type="number"></td>
+                <td><input class="form-control" id="vendor5-label" type="text" placeholder="Vendor Name"></td>
+                <td><input class="form-control" id="vendor5-input" type="number" placeholder="$ 00.00"></td>
               </tr>               
             </tbody>
           </table> 
           <button class="btn btn-primary" id="add-vendor-btn" type="submit">Submit</button>
         </div>
         
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3">
+        
+        <div class="col-lg-4">
           <table class="table table-bordered">
             <tbody>
               <tr>
-                <td>Paintshop Labor</td>
-                <td>$<div id="paintshopLabor"></div></td>
+                <td class="colWidth1">Paintshop Labor</td>
+                <td class="colWidth2">$<div id="paintshopLabor"></div></td>
               </tr>
               <tr>
                 <td>Bodyshop Labor</td>
@@ -254,13 +254,13 @@
           </table>         
         </div>
 
-        <div class="col-lg-1"></div>
-        <div class="col-lg-3">
+        
+        <div class="col-lg-4">
           <table class="table table-bordered">
             <tbody>
               <tr>
-                <td>Cost of Sublet</td>
-                <td>$<div id="costOfSublet"></div></td>
+                <td class="colWidth1">Cost of Sublet</td>
+                <td class="colWidth2">$<div id="costOfSublet"></div></td>
               </tr>
               <tr>
                 <td>Sublet $ GP</td>
@@ -285,7 +285,7 @@
             </tbody>
           </table>
         </div>
-        <div class="col-lg-1"></div>
+       
       </div>
     </div>
   </div>
