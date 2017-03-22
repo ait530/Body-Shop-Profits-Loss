@@ -316,3 +316,18 @@ $(".showbutton").click(function(){
 
 
 
+// NEW CODE ENTERED HERE 
+
+// this is used to dispaly and hide entry fields when add new button clicked.
+
+$(".showbutton").click(function(){
+  event.preventDefault();    
+  $("#add-new-record").removeClass("hidden");
+}); 
+
+
+// this is the code for the print button on the top right, opens print dialog box to print the window.
+
+function printMe() {
+    window.print();
+}
