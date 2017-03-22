@@ -95,8 +95,7 @@ var sumTowAndStorage= 0;
 
 
 
-var lastJob;
-
+var jobToAdd;
 
 
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
@@ -149,7 +148,7 @@ database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey
   projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
 
 });
-
+console.log(lastJob.newCarJob);
 
 
 
@@ -181,8 +180,9 @@ $("#add-total-btn").on("click", function(event) {
 });
 
 
-
 var managerJob;
+console.log(managerJob);
+
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
 database.ref('managerTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
   managerJob = childSnapshot.val();
@@ -222,7 +222,6 @@ $("#add-vendor-btn").on("click", function(event) {
 
   }
 
-
   // database.ref().push(vendorTotalWork);
   database.ref('vendorTotalWork').push({
     vendorTotalWork
@@ -238,6 +237,7 @@ $("#add-vendor-btn").on("click", function(event) {
 
 
 var vendorJob;
+console.log(vendorJob);
 
 database.ref('vendorTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
   vendorJob = childSnapshot.val();
