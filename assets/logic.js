@@ -43,7 +43,7 @@ $("#add-job-btn").on("click", function(event) {
 
 
   // Creates local "temporary" object for holding labors data
-	var newCarJob = {
+	var newCarJobData = {
     projectDate: projDate,
     projectNumber: projNumb,
     metalLabor: projMetalLabor,
@@ -118,8 +118,8 @@ database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey
   projPaintAndMaterial = jobToAdd.paintAndMaterial;
   projSublet = jobToAdd.sublet;
   projTowAndStorage = jobToAdd.towAndStorage;
-  console.log(projDate);
-  console.log(projNumb);
+  // console.log(projDate);
+  // console.log(projNumb);
 
 
   // //Computing all the sums 
@@ -133,7 +133,7 @@ database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey
   sumSublet += parseInt(projSublet);
   sumTowAndStorage += parseInt(projTowAndStorage);
 
-    // Add each sum labor data into the table
+  // Add each sum labor data into the table
   $("#metalLabor").text(sumMetalLabor);
   $("#frameLabor").text(sumFrameLabor);
   $("#mechLabor").text(sumMechLabor);
@@ -143,7 +143,6 @@ database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey
   $("#paintMaterial").text(sumPaintAndMaterial);
   $("#sublet").text(sumSublet);
   $("#towStorage").text(sumTowAndStorage);
-
 
 
   $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
