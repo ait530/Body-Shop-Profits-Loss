@@ -10,11 +10,11 @@
 
 // 1. Initialize Firebase
 var config = {
-  apiKey: "AIzaSyDyS6-PlzGVgp1Fyfr0Qn8bcGHICyEDiPM",
-	authDomain: "autoshop-project.firebaseapp.com",
-	databaseURL: "https://autoshop-project.firebaseio.com",
-	storageBucket: "autoshop-project.appspot.com",
-	messagingSenderId: "92989190932"
+    apiKey: "AIzaSyAkteqISUm9sVzibyuHXcpfMtsFku141Vk",
+    authDomain: "body-shop-group-project.firebaseapp.com",
+    databaseURL: "https://body-shop-group-project.firebaseio.com",
+    storageBucket: "body-shop-group-project.appspot.com",
+    messagingSenderId: "761861202614"
 };
 
 // Creates and initializes a Firebase app instance
