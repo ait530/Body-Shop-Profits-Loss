@@ -11,10 +11,10 @@
 // 1. Initialize Firebase
 var config = {
   apiKey: "AIzaSyDyS6-PlzGVgp1Fyfr0Qn8bcGHICyEDiPM",
-	authDomain: "autoshop-project.firebaseapp.com",
-	databaseURL: "https://autoshop-project.firebaseio.com",
-	storageBucket: "autoshop-project.appspot.com",
-	messagingSenderId: "92989190932"
+  authDomain: "autoshop-project.firebaseapp.com",
+  databaseURL: "https://autoshop-project.firebaseio.com",
+  storageBucket: "autoshop-project.appspot.com",
+  messagingSenderId: "92989190932"
 };
 
 // Creates and initializes a Firebase app instance
@@ -22,266 +22,246 @@ firebase.initializeApp(config);
 
 // Gets the Database service for the default app or a given app
 var database = firebase.database();
-  //PANEL 3
-  // 2. Submit Button for adding job labors
-  $("#add-job-btn").on("click", function(event) {
-    event.preventDefault();
+//PANEL 3
+// 2. Submit Button for adding job labors
+$("#add-job-btn").on("click", function(event) {
+  event.preventDefault();
 
-    // Grabs user input elements and reduces excess space
-    var projDate = $("#date-input").val().trim();
-    var projNumb = $("#projNumb-input").val().trim();
-  	var projMetalLabor = $("#metalLabor-input").val().trim();
-  	var projFrameLabor = $("#frameLabor-input").val().trim();
-  	var projMechLabor = $("#mechLabor-input").val().trim();
-  	var projPaintLabor = $("#paintLabor-input").val().trim();
-  	var projPartSales = $("#partSales-input").val().trim();
-  	var projPartsCost = $("#partsCost-input").val().trim();
-  	var projPaintAndMaterial = $("#paintAndMaterial-input").val().trim();
-  	var projSublet = $("#sublet-input").val().trim();
-  	var projTowAndStorage = $("#towAndStorage-input").val().trim();
+  // Grabs user input elements and reduces excess space
+  var projDate = $("#date-input").val().trim();
+  var projNumb = $("#projNumb-input").val().trim();
+  var projMetalLabor = $("#metalLabor-input").val().trim();
+  var projFrameLabor = $("#frameLabor-input").val().trim();
+  var projMechLabor = $("#mechLabor-input").val().trim();
+  var projPaintLabor = $("#paintLabor-input").val().trim();
+  var projPartSales = $("#partSales-input").val().trim();
+  var projPartsCost = $("#partsCost-input").val().trim();
+  var projPaintAndMaterial = $("#paintAndMaterial-input").val().trim();
+  var projSublet = $("#sublet-input").val().trim();
+  var projTowAndStorage = $("#towAndStorage-input").val().trim();
 
+  // Creates local "temporary" object for holding labors data
+  var newCarJob = {
+    projectDate: projDate,
+    projectNumber: projNumb,
+    metalLabor: projMetalLabor,
+    frameLabor: projFrameLabor,
+    mechLabor: projMechLabor,
+    paintLabor: projPaintLabor,
+    partSales: projPartSales,
+    partsCost: projPartsCost,
+    paintAndMaterial: projPaintAndMaterial,
+    sublet: projSublet,
+    towAndStorage: projTowAndStorage,
+  }
 
-
-    // Creates local "temporary" object for holding labors data
-  	var newCarJob = {
-      projectDate: projDate,
-      projectNumber: projNumb,
-      metalLabor: projMetalLabor,
-      frameLabor: projFrameLabor,
-      mechLabor: projMechLabor,
-      paintLabor: projPaintLabor,
-      partSales: projPartSales,
-      partsCost: projPartsCost,   
-      paintAndMaterial: projPaintAndMaterial,
-      sublet: projSublet,
-      towAndStorage: projTowAndStorage, 
-    }
-
-
-    database.ref('newCarJob').push({
-      newCarJob
-    });
-
-    // Clears all of the text-boxes
-    $("#date-input").val("");
-    $("#projNumb-input").val("");
-    $("#metalLabor-input").val("");
-    $("#frameLabor-input").val("");
-    $("#mechLabor-input").val("");
-    $("#paintLabor-input").val("");
-    $("#partSales-input").val("");
-    $("#partsCost-input").val("");
-    $("#paintAndMaterial-input").val("");
-    $("#sublet-input").val("");
-    $("#towAndStorage-input").val("");
-
-
-    // Prevents moving to new page
-    return false;
+  database.ref('newCarJob').push({
+    newCarJob
   });
+
+  // Clears all of the text-boxes
+  $("#date-input").val("");
+  $("#projNumb-input").val("");
+  $("#metalLabor-input").val("");
+  $("#frameLabor-input").val("");
+  $("#mechLabor-input").val("");
+  $("#paintLabor-input").val("");
+  $("#partSales-input").val("");
+  $("#partsCost-input").val("");
+  $("#paintAndMaterial-input").val("");
+  $("#sublet-input").val("");
+  $("#towAndStorage-input").val("");
+
+  // Prevents moving to new page
+  return false;
+});
 
 // //counter
-var sumMetalLabor= 0;
-var sumFrameLabor= 0;
-var sumMechLabor= 0;
-var sumPaintLabor= 0;
-var sumPartSales= 0;
-var sumPartsCost= 0;
-var sumPaintAndMaterial= 0;
-var sumSublet= 0;
-var sumTowAndStorage= 0;
-  //PANEL 3
-  // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
-  database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey) {
-    var lastJob = childSnapshot.val();
-    var jobToAdd = lastJob.newCarJob;
-    console.log(jobToAdd);
+var sumMetalLabor = 0;
+var sumFrameLabor = 0;
+var sumMechLabor = 0;
+var sumPaintLabor = 0;
+var sumPartSales = 0;
+var sumPartsCost = 0;
+var sumPaintAndMaterial = 0;
+var sumSublet = 0;
+var sumTowAndStorage = 0;
+//PANEL 3
+// 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey) {
+  var lastJob = childSnapshot.val();
+  var jobToAdd = lastJob.newCarJob;
+  console.log(jobToAdd);
 
-    //Store everything into a variable.
-    projDate = jobToAdd.projectDate;
-    projNumb = jobToAdd.projectNumber;
-    projMetalLabor = jobToAdd.metalLabor;
-    projFrameLabor = jobToAdd.frameLabor;
-    projMechLabor = jobToAdd.mechLabor;
-    projPaintLabor = jobToAdd.paintLabor;
-    projPartSales = jobToAdd.partSales;
-    projPartsCost = jobToAdd.partsCost;
-    projPaintAndMaterial = jobToAdd.paintAndMaterial;
-    projSublet = jobToAdd.sublet;
-    projTowAndStorage = jobToAdd.towAndStorage;
+  //Store everything into a variable.
+  projDate = jobToAdd.projectDate;
+  projNumb = jobToAdd.projectNumber;
+  projMetalLabor = jobToAdd.metalLabor;
+  projFrameLabor = jobToAdd.frameLabor;
+  projMechLabor = jobToAdd.mechLabor;
+  projPaintLabor = jobToAdd.paintLabor;
+  projPartSales = jobToAdd.partSales;
+  projPartsCost = jobToAdd.partsCost;
+  projPaintAndMaterial = jobToAdd.paintAndMaterial;
+  projSublet = jobToAdd.sublet;
+  projTowAndStorage = jobToAdd.towAndStorage;
 
-    //Computing all the sums 
-    sumMetalLabor += parseInt(projMetalLabor);
-    sumFrameLabor += parseInt(projFrameLabor);
-    sumMechLabor += parseInt(projMechLabor);
-    sumPaintLabor += parseInt(projPaintLabor);
-    sumPartSales += parseInt(projPartSales);
-    sumPartsCost += parseInt(projPartsCost);
-    sumPaintAndMaterial += parseInt(projPaintAndMaterial);
-    sumSublet += parseInt(projSublet);
-    sumTowAndStorage += parseInt(projTowAndStorage);
+  //Computing all the sums 
+  sumMetalLabor += parseInt(projMetalLabor);
+  sumFrameLabor += parseInt(projFrameLabor);
+  sumMechLabor += parseInt(projMechLabor);
+  sumPaintLabor += parseInt(projPaintLabor);
+  sumPartSales += parseInt(projPartSales);
+  sumPartsCost += parseInt(projPartsCost);
+  sumPaintAndMaterial += parseInt(projPaintAndMaterial);
+  sumSublet += parseInt(projSublet);
+  sumTowAndStorage += parseInt(projTowAndStorage);
 
+  // Add each sum labor data into the table
+  $("#metalLabor").text(sumMetalLabor);
+  $("#frameLabor").text(sumFrameLabor);
+  $("#mechLabor").text(sumMechLabor);
+  $("#paintLabor").text(sumPaintLabor);
+  $("#partSales").text(sumPartSales);
+  $("#partsCost").text(sumPartsCost);
+  $("#paintMaterial").text(sumPaintAndMaterial);
+  $("#sublet").text(sumSublet);
+  $("#towStorage").text(sumTowAndStorage);
 
+  $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
+    projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>" + projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
 
-    // Add each sum labor data into the table
-    $("#metalLabor").text(sumMetalLabor);
-    $("#frameLabor").text(sumFrameLabor);
-    $("#mechLabor").text(sumMechLabor);
-    $("#paintLabor").text(sumPaintLabor);
-    $("#partSales").text(sumPartSales);
-    $("#partsCost").text(sumPartsCost);
-    $("#paintMaterial").text(sumPaintAndMaterial);
-    $("#sublet").text(sumSublet);
-    $("#towStorage").text(sumTowAndStorage);
+});
 
+// PANEL 1
 
-    $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
-    projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>"+ projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
+$("#add-total-btn").on("click", function(event) {
+  event.preventDefault();
 
-  });
+  //grabs manager input 
+  var managerInputPaintPayroll = $("#totalPaintshopPayroll-input").val().trim();
+  var managerInputBodyshopPayroll = $("#totalBodyshopPayroll-input").val().trim();
 
+  // Creates local "temporary" object for holding manager input data
 
-  // PANEL 1
+  var managerTotalWork = {
+    managerPaintPay: managerInputPaintPayroll,
+    managerBodyShopPay: managerInputBodyshopPayroll
+  }
 
-  $("#add-total-btn").on("click", function(event) {
-    event.preventDefault();
-
-    //grabs manager input 
-    var managerInputPaintPayroll = $("#totalPaintshopPayroll-input").val().trim();
-    var managerInputBodyshopPayroll = $("#totalBodyshopPayroll-input").val().trim();
-
-    // Creates local "temporary" object for holding manager input data
-
-    var managerTotalWork = {
-      managerPaintPay: managerInputPaintPayroll,
-      managerBodyShopPay: managerInputBodyshopPayroll
-    }
-
-    database.ref('managerTotalWork').push({
+  database.ref('managerTotalWork').push({
       managerTotalWork
     })
     // Prevents moving to new page
-    return false;
-  });
+  return false;
+});
 
-
-
-  //PANEL 1
-  var sumManagerPayRoll= 0;
-  var sumManagerBodyRoll= 0;
-  //Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
-  database.ref('managerTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
-    var managerJob = childSnapshot.val();
+//PANEL 1
+var sumManagerPayRoll = 0;
+var sumManagerBodyRoll = 0;
+//Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+database.ref('managerTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
+  var managerJob = childSnapshot.val();
   // console.log(managerJob);
-    var managerToAdd = managerJob.managerTotalWork;
+  var managerToAdd = managerJob.managerTotalWork;
 
-    var managerInputPaintPayroll = managerToAdd.managerPaintPay;
-    var managerInputBodyshopPayroll = managerToAdd.managerBodyShopPay;
-    sumManagerPayRoll += parseInt(managerInputPaintPayroll);
-    sumManagerBodyRoll += parseInt(managerInputBodyshopPayroll); 
+  var managerInputPaintPayroll = managerToAdd.managerPaintPay;
+  var managerInputBodyshopPayroll = managerToAdd.managerBodyShopPay;
+  sumManagerPayRoll += parseInt(managerInputPaintPayroll);
+  sumManagerBodyRoll += parseInt(managerInputBodyshopPayroll);
+});
+
+//PANEL 2
+
+$("#add-vendor-btn").on("click", function(event) {
+  event.preventDefault();
+
+  //grabs labels vendors input 
+  var managerLabelVendor1 = $("#vendor1-label").val().trim();
+  var managerLabelVendor2 = $("#vendor2-label").val().trim();
+  var managerLabelVendor3 = $("#vendor3-label").val().trim();
+  var managerLabelVendor4 = $("#vendor4-label").val().trim();
+  var managerLabelVendor5 = $("#vendor5-label").val().trim();
+
+  //grabs manager vendors input 
+  var managerInputVendor1 = $("#vendor1-input").val().trim();
+  var managerInputVendor2 = $("#vendor2-input").val().trim();
+  var managerInputVendor3 = $("#vendor3-input").val().trim();
+  var managerInputVendor4 = $("#vendor4-input").val().trim();
+  var managerInputVendor5 = $("#vendor5-input").val().trim();
+
+  // Creates local "temporary" object for holding vendor input data
+
+  var vendorTotalWork = {
+    inputVendor1: managerInputVendor1,
+    inputVendor2: managerInputVendor2,
+    inputVendor3: managerInputVendor3,
+    inputVendor4: managerInputVendor4,
+    inputVendor5: managerInputVendor5
+
+  }
+
+  // database.ref().push(vendorTotalWork);
+  database.ref('vendorTotalWork').push({
+    vendorTotalWork
   });
 
+  // Prevents moving to new page
+  return false;
 
+});
 
-  //PANEL 2
+//PANEL 2
+var sumInputVendor1 = 0;
+var sumInputVendor2 = 0;
+var sumInputVendor3 = 0;
+var sumInputVendor4 = 0;
+var sumInputVendor5 = 0;
 
-  $("#add-vendor-btn").on("click", function(event) {
-    event.preventDefault();
+database.ref('vendorTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
+  var vendorJob = childSnapshot.val();
+  console.log(vendorJob);
+  var vendorToAdd = vendorJob.vendorTotalWork;
 
-    //grabs labels vendors input 
-    var managerLabelVendor1 = $("#vendor1-label").val().trim();
-    var managerLabelVendor2 = $("#vendor2-label").val().trim();
-    var managerLabelVendor3 = $("#vendor3-label").val().trim();
-    var managerLabelVendor4 = $("#vendor4-label").val().trim();
-    var managerLabelVendor5 = $("#vendor5-label").val().trim();
+  // // Panel 2
+  var managerInputVendor1 = vendorToAdd.inputVendor1;
+  var managerInputVendor2 = vendorToAdd.inputVendor2;
+  var managerInputVendor3 = vendorToAdd.inputVendor3;
+  var managerInputVendor4 = vendorToAdd.inputVendor4;
+  var managerInputVendor5 = vendorToAdd.inputVendor5;
+  sumInputVendor1 += parseInt(managerInputVendor1);
+  sumInputVendor2 += parseInt(managerInputVendor2);
+  sumInputVendor3 += parseInt(managerInputVendor3);
+  sumInputVendor4 += parseInt(managerInputVendor4);
+  sumInputVendor5 += parseInt(managerInputVendor5);
 
-    //grabs manager vendors input 
-    var managerInputVendor1 = $("#vendor1-input").val().trim();
-    var managerInputVendor2 = $("#vendor2-input").val().trim();
-    var managerInputVendor3 = $("#vendor3-input").val().trim();
-    var managerInputVendor4 = $("#vendor4-input").val().trim();
-    var managerInputVendor5 = $("#vendor5-input").val().trim();
-
-
-
-    // Creates local "temporary" object for holding vendor input data
-
-   var vendorTotalWork = {
-      inputVendor1: managerInputVendor1,
-      inputVendor2: managerInputVendor2,
-      inputVendor3: managerInputVendor3,
-      inputVendor4: managerInputVendor4,
-      inputVendor5: managerInputVendor5
-
-    }
-
-    // database.ref().push(vendorTotalWork);
-    database.ref('vendorTotalWork').push({
-      vendorTotalWork
-    });
-
-
-    // Prevents moving to new page
-    return false;
-    
-  });
-
-  //PANEL 2
-  var sumInputVendor1= 0;
-  var sumInputVendor2= 0;
-  var sumInputVendor3= 0;
-  var sumInputVendor4= 0;
-  var sumInputVendor5= 0;
-
-  database.ref('vendorTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
-    var vendorJob = childSnapshot.val();
-    console.log(vendorJob);
-    var vendorToAdd = vendorJob.vendorTotalWork;
-
-      
-    // // Panel 2
-    var managerInputVendor1 = vendorToAdd.inputVendor1;
-    var managerInputVendor2 = vendorToAdd.inputVendor2;
-    var managerInputVendor3 = vendorToAdd.inputVendor3;
-    var managerInputVendor4 = vendorToAdd.inputVendor4;
-    var managerInputVendor5 = vendorToAdd.inputVendor5;
-    sumInputVendor1 += parseInt(managerInputVendor1);
-    sumInputVendor2 += parseInt(managerInputVendor2);
-    sumInputVendor3 += parseInt(managerInputVendor3);
-    sumInputVendor4 += parseInt(managerInputVendor4);
-    sumInputVendor5 += parseInt(managerInputVendor5);
-     
-    
-  });
-
+});
 
 function renderDataToScreen(data) {
   //do stuff
   console.log(data);
   console.log(sumMechLabor);
-    // Panel 3 Calculation
-    $("#paintshopLabor").text(sumPaintLabor);
-    $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
-    $("#gpDollarPaintshop").text(sumPaintLabor + sumManagerPayRoll);
-    $("#gpPercentPaintshop").text(((sumPaintLabor + sumManagerPayRoll) / sumPaintLabor * 100).toFixed(0) + '%');
-    $("#gpDollarBodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll);
-    $("#gpPercentBodyshop").text(((((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll))/sumManagerBodyRoll * 100).toFixed(2) + '%');
-    $("#gpPaintDollar").text(sumPaintAndMaterial - (sumInputVendor1 +sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5));
-    $("#gpPercentPM").text(((sumPaintAndMaterial - (sumInputVendor1 +sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) / sumPaintAndMaterial * 100).toFixed(0) + '%');
-    $("#gpDollarParts").text(sumPartSales - sumPartsCost);
-    $("#gpPercentParts").text(((sumPartSales - sumPartsCost) / sumPartSales  * 100).toFixed(0) + '%');
-    
+  // Panel 3 Calculation
+  $("#paintshopLabor").text(sumPaintLabor);
+  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
+  $("#gpDollarPaintshop").text(sumPaintLabor + sumManagerPayRoll);
+  $("#gpPercentPaintshop").text(((sumPaintLabor + sumManagerPayRoll) / sumPaintLabor * 100).toFixed(0) + '%');
+  $("#gpDollarBodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll);
+  $("#gpPercentBodyshop").text(((((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll)) / sumManagerBodyRoll * 100).toFixed(2) + '%');
+  $("#gpPaintDollar").text(sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5));
+  $("#gpPercentPM").text(((sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) / sumPaintAndMaterial * 100).toFixed(0) + '%');
+  $("#gpDollarParts").text(sumPartSales - sumPartsCost);
+  $("#gpPercentParts").text(((sumPartSales - sumPartsCost) / sumPartSales * 100).toFixed(0) + '%');
 
-    // PANEL 4 CALCULATION
-    $("#costOfSublet").text(sumSublet);
-    $("#subletDollarGP").text((sumSublet - sumSublet));
-    $("#subletPercentGP").text(((sumSublet - sumSublet) / sumSublet * 100).toFixed(0) + '%');
-    $("#totalSales").text((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage));
-    $("#totalDollarGP").text((sumPaintLabor + sumManagerPayRoll) + ((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll) + (sumPaintAndMaterial - (sumInputVendor1 +sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) + (sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage);
-    $("#totalPercentGP").text((sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage)/((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage));
+  // PANEL 4 CALCULATION
+  $("#costOfSublet").text(sumSublet);
+  $("#subletDollarGP").text((sumSublet - sumSublet));
+  $("#subletPercentGP").text(((sumSublet - sumSublet) / sumSublet * 100).toFixed(0) + '%');
+  $("#totalSales").text((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage));
+  $("#totalDollarGP").text((sumPaintLabor + sumManagerPayRoll) + ((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll) + (sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) + (sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage);
+  $("#totalPercentGP").text((sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage) / ((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage));
 
 }
-
 
 function getDatabaseData() {
   //do stuff
@@ -292,57 +272,17 @@ function getDatabaseData() {
 
 getDatabaseData();
 
-
-   // // Creates local "temporary" object for holding vendor label
-
-   // var vendorLabelTotalWork = {
-   //    inputLabelVendor1: managerLabelVendor1,
-   //    inputLabelVendor2: managerLabelVendor2,
-   //    inputLabelVendor3: managerLabelVendor3,
-   //    inputLabelVendor4: managerLabelVendor4,
-   //    inputLabelVendor5: managerLabelVendor5
-
-   //  }
-
- // // // Panel 2
- //    var managerlabelVendor1 = vendorToAdd.labelVendor1;
- //    var managerlabelVendor2 = vendorToAdd.labelVendor2;
- //    var managerlabelVendor3 = vendorToAdd.labelVendor3;
- //    var managerlabelVendor4 = vendorToAdd.labelVendor4;
- //    var managerlabelVendor5 = vendorToAdd.labelVendor5;
-
-
-//   // $("#costOfSublet").sumSublet
-//   // subletDollarGP = ?
-//   // subletPercentGP = ?
-//   // totalSales = sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage;
-
-//   // totalDollarGP = gpPaintDollar + gpDollarBodyshop + gpPaintDollar + gpDollarParts + subletDollarGP + sumTowAndStorage
-
-//   // totalPercentGP = totalDollarGP / totalSales
-
-// // });
-
-
 // NEW CODE ENTERED HERE 
 
 // this is used to dispaly and hide entry fields when add new button clicked.
 
-// click add new will make the field appears
-
-$(".showbutton").click(function(){
- event.preventDefault();   
- $("#add-new-record").removeClass("hidden");
-});
-
-
-$(".showbutton").click(function(){
-  event.preventDefault();    
+$(".showbutton").click(function() {
+  event.preventDefault();   
   $("#add-new-record").removeClass("hidden");
-}); 
+});
 
 // this is the code for the print button on the top right, opens print dialog box to print the window.
 
 function printMe() {
-    window.print();
+  window.print();
 }
