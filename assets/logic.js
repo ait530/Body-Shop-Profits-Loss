@@ -253,42 +253,30 @@ var vendorJob;
     
   });
 
-// click add new will make the field appears
+function renderDataToScreen(data) {
+  //do stuff
+  console.log(data);
+  console.log(sumMechLabor);
+    $("#paintshopLabor").text(sumPaintLabor);
 
-$(".showbutton").click(function(){
- event.preventDefault();   
- $("#add-new-record").removeClass("hidden");
-});
+}
 
 
+function getDatabaseData() {
+  //do stuff
+  firebase.database().ref().once('value').then(function(snapshot) {
+    renderDataToScreen(snapshot.val())
+  })
+}
 
-// // //Computing all the sums 
-// sumMetalLabor += parseInt(projMetalLabor);
-// sumFrameLabor += parseInt(projFrameLabor);
-// sumMechLabor += parseInt(projMechLabor);
-// sumPaintLabor += parseInt(projPaintLabor);
-// sumPartSales += parseInt(projPartSales);
-// sumPartsCost += parseInt(projPartsCost);
-// sumPaintAndMaterial += parseInt(projPaintAndMaterial);
-// sumSublet += parseInt(projSublet);
-// sumTowAndStorage += parseInt(projTowAndStorage);
+getDatabaseData();
 
-//   // Add each sum labor data into the table
-//   $("#metalLabor").text(sumMetalLabor);
-//   $("#frameLabor").text(sumFrameLabor);
-//   $("#mechLabor").text(sumMechLabor);
-//   $("#paintLabor").text(sumPaintLabor);
-//   $("#partSales").text(sumPartSales);
-//   $("#partsCost").text(sumPartsCost);
-//   $("#paintMaterial").text(sumPaintAndMaterial);
-//   $("#sublet").text(sumSublet);
-//   $("#towStorage").text(sumTowAndStorage);
-//   $("#paintPay").text(sumPaintPay);
+
 
 
 //   // // 4. Create a way to calculate the sum for all the work  
 
-//   $("#paintshopLabor").text(sumPaintLabor);
+
 //   $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
 //   // $("#gpDollarPaintshop").text(sumPaintLabor + div for total paintshop payroll); // we need work on 
 //   // $("#gpPercentPaintshop").text((sumPaintLabor + div for total paintshop payroll)/ sumPaintLabor * 100);
@@ -314,28 +302,24 @@ $(".showbutton").click(function(){
 
 // // });
 
-function renderDataToScreen(data) {
-  //do stuff
-  console.log(data);
-}
 
 // NEW CODE ENTERED HERE 
 
 // this is used to dispaly and hide entry fields when add new button clicked.
+
+// click add new will make the field appears
+
+$(".showbutton").click(function(){
+ event.preventDefault();   
+ $("#add-new-record").removeClass("hidden");
+});
+
 
 $(".showbutton").click(function(){
   event.preventDefault();    
   $("#add-new-record").removeClass("hidden");
 }); 
 
-function getDatabaseData() {
-  //do stuff
-  firebase.database().ref().once('value').then(function(snapshot) {
-    renderDataToScreen(snapshot.val())
-  })
-}
-
-getDatabaseData();
 // this is the code for the print button on the top right, opens print dialog box to print the window.
 
 function printMe() {
