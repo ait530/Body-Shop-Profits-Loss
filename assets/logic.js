@@ -132,6 +132,8 @@ var lastJob;
     sumSublet += parseInt(projSublet);
     sumTowAndStorage += parseInt(projTowAndStorage);
 
+
+
     // Add each sum labor data into the table
     $("#metalLabor").text(sumMetalLabor);
     $("#frameLabor").text(sumFrameLabor);
@@ -180,9 +182,9 @@ var lastJob;
   });
 
 
-var managerJob;
-// console.log(managerJob);
 
+  var sumManagerPayRoll= 0;
+  var sumManagerBodyRoll= 0;
   // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
   database.ref('managerTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
     managerJob = childSnapshot.val();
@@ -192,7 +194,8 @@ var managerJob;
     // Panel 1
     var managerInputPaintPayroll = managerToAdd.managerPaintPay;
     var managerInputBodyshopPayroll = managerToAdd.managerBodyShopPay;
-    
+    sumManagerPayRoll += parseInt(managerInputPaintPayroll);
+    sumManagerBodyRoll += parseInt(managerInputBodyshopPayroll); 
   });
 
 
@@ -236,8 +239,9 @@ var managerJob;
   });
 
 
-var vendorJob;
-// console.log(vendorJob);
+  var sumVendorPayRoll= 0;
+  var sumVendorBodyRoll= 0;
+  // console.log(vendorJob);
 
   database.ref('vendorTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
     vendorJob = childSnapshot.val();
@@ -257,7 +261,24 @@ function renderDataToScreen(data) {
   //do stuff
   console.log(data);
   console.log(sumMechLabor);
+    // Panel 3 Calculation
     $("#paintshopLabor").text(sumPaintLabor);
+    $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
+    $("#gpDollarPaintshop").text(sumPaintLabor + sumManagerPayRoll);
+    $("#gpPercentPaintshop").text(((sumPaintLabor + sumManagerPayRoll) / sumPaintLabor * 100).toFixed(0) + '%');
+    $("#gpDollarBodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll);
+    // $("#GP % Bodyshop").text(((((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll))/sumManagerBodyRoll * 100).toFixed(2) + '%');
+    // $("#gpPaintDollar").text(sumPaintAndMaterial -);
+    $("#gpDollarParts").text(sumPartSales - sumPartsCost);
+    $("#gpPercentParts").text(((sumPartSales - sumPartsCost) / sumPartSales  * 100).toFixed(0) + '%');
+    // PANEL 4 CALCULATION
+    $("#costOfSublet").text(sumSublet);
+    $("#subletDollarGP").text((sumSublet - sumSublet));
+    $("#subletPercentGP").text(((sumSublet - sumSublet) / sumSublet * 100).toFixed(0) + '%');
+    $("#totalSales").text((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage));
+    $("#totalDollarGP").text((sumPaintLabor + sumManagerPayRoll) + ((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll) + gpPaintDollar + (sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage);
+    $("#totalPercentGP").text((sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage)/((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage));
+
 
 }
 
@@ -274,20 +295,6 @@ getDatabaseData();
 
 
 
-//   // // 4. Create a way to calculate the sum for all the work  
-
-
-//   $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
-//   // $("#gpDollarPaintshop").text(sumPaintLabor + div for total paintshop payroll); // we need work on 
-//   // $("#gpPercentPaintshop").text((sumPaintLabor + div for total paintshop payroll)/ sumPaintLabor * 100);
-//   // $("#gpDollarBodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - totalBodyShopPayroll;
-//   // $("#GP % Bodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - totalBodyShopPayroll)/paintShopBodyLabor * 100);
-//   // $("#gpPaintDollar").text(sumPaintAndMaterial -);
-//   $("#gpDollarParts").text(sumPartSales - sumPartsCost);
-//   $("#gpPercentParts").text(gpDollarParts / sumPartSales  * 100);
-
-
-//   // // ////////////////////////////////////////////////////
 
 
 
