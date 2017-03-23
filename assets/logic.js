@@ -43,7 +43,7 @@ var database = firebase.database();
 
 
     // Creates local "temporary" object for holding labors data
-  	var newCarJobData = {
+  	var newCarJob = {
       projectDate: projDate,
       projectNumber: projNumb,
       metalLabor: projMetalLabor,
@@ -95,7 +95,7 @@ var sumTowAndStorage= 0;
   database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey) {
     var lastJob = childSnapshot.val();
     var jobToAdd = lastJob.newCarJob;
-
+    console.log(jobToAdd);
 
     //Store everything into a variable.
     projDate = jobToAdd.projectDate;
