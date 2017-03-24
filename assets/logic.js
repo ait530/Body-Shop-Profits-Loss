@@ -24,6 +24,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
+$("#sign-in").click(function(){
 // Authentication
 
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -33,7 +34,6 @@ var provider = new firebase.auth.GoogleAuthProvider();
     // The signed-in user info.
     var user = result.user;
     // ...
-    // $(".material-icons").append("user");
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
@@ -43,7 +43,9 @@ var provider = new firebase.auth.GoogleAuthProvider();
     // The firebase.auth.AuthCredential type that was used.
     var credential = error.credential;
     // ...
-    console.log(provider);
+  });
+  prompt(provider);
+  console.log(provider);
 });
 
 
