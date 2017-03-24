@@ -107,26 +107,17 @@ database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey
   projTowAndStorage = jobToAdd.towAndStorage;
 
   //Computing all the sums 
-  sumMetalLabor += parseInt(projMetalLabor);
-  sumFrameLabor += parseInt(projFrameLabor);
-  sumMechLabor += parseInt(projMechLabor);
-  sumPaintLabor += parseInt(projPaintLabor);
-  sumPartSales += parseInt(projPartSales);
-  sumPartsCost += parseInt(projPartsCost);
-  sumPaintAndMaterial += parseInt(projPaintAndMaterial);
-  sumSublet += parseInt(projSublet);
-  sumTowAndStorage += parseInt(projTowAndStorage);
+  sumMetalLabor += parseFloat(projMetalLabor);
+  sumFrameLabor += parseFloat(projFrameLabor);
+  sumMechLabor += parseFloat(projMechLabor);
+  sumPaintLabor += parseFloat(projPaintLabor);
+  sumPartSales += parseFloat(projPartSales);
+  sumPartsCost += parseFloat(projPartsCost);
+  sumPaintAndMaterial += parseFloat(projPaintAndMaterial);
+  sumSublet += parseFloat(projSublet);
+  sumTowAndStorage += parseFloat(projTowAndStorage);
 
-  // Add each sum labor data into the table
-  $("#metalLabor").text(sumMetalLabor);
-  $("#frameLabor").text(sumFrameLabor);
-  $("#mechLabor").text(sumMechLabor);
-  $("#paintLabor").text(sumPaintLabor);
-  $("#partSales").text(sumPartSales);
-  $("#partsCost").text(sumPartsCost);
-  $("#paintMaterial").text(sumPaintAndMaterial);
-  $("#sublet").text(sumSublet);
-  $("#towStorage").text(sumTowAndStorage);
+
 
   $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
     projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>" + projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
@@ -167,8 +158,8 @@ database.ref('managerTotalWork').on("child_added", function(childSnapshot, prevC
 
   var managerInputPaintPayroll = managerToAdd.managerPaintPay;
   var managerInputBodyshopPayroll = managerToAdd.managerBodyShopPay;
-  sumManagerPayRoll += parseInt(managerInputPaintPayroll);
-  sumManagerBodyRoll += parseInt(managerInputBodyshopPayroll);
+  sumManagerPayRoll += parseFloat(managerInputPaintPayroll);
+  sumManagerBodyRoll += parseFloat(managerInputBodyshopPayroll);
 });
 
 //PANEL 2
@@ -229,11 +220,11 @@ database.ref('vendorTotalWork').on("child_added", function(childSnapshot, prevCh
   var managerInputVendor3 = vendorToAdd.inputVendor3;
   var managerInputVendor4 = vendorToAdd.inputVendor4;
   var managerInputVendor5 = vendorToAdd.inputVendor5;
-  sumInputVendor1 += parseInt(managerInputVendor1);
-  sumInputVendor2 += parseInt(managerInputVendor2);
-  sumInputVendor3 += parseInt(managerInputVendor3);
-  sumInputVendor4 += parseInt(managerInputVendor4);
-  sumInputVendor5 += parseInt(managerInputVendor5);
+  sumInputVendor1 += parseFloat(managerInputVendor1);
+  sumInputVendor2 += parseFloat(managerInputVendor2);
+  sumInputVendor3 += parseFloat(managerInputVendor3);
+  sumInputVendor4 += parseFloat(managerInputVendor4);
+  sumInputVendor5 += parseFloat(managerInputVendor5);
 
 });
 
@@ -241,25 +232,36 @@ function renderDataToScreen(data) {
   //do stuff
   console.log(data);
   console.log(sumMechLabor);
+    // Add each sum labor data into the table
+  $("#metalLabor").text((sumMetalLabor).toFixed(2));
+  $("#frameLabor").text((sumFrameLabor).toFixed(2));
+  $("#mechLabor").text((sumMechLabor).toFixed(2));
+  $("#paintLabor").text((sumPaintLabor).toFixed(2));
+  $("#partSales").text((sumPartSales).toFixed(2));
+  $("#partsCost").text((sumPartsCost).toFixed(2));
+  $("#paintMaterial").text((sumPaintAndMaterial).toFixed(2));
+  $("#sublet").text((sumSublet).toFixed(2));
+  $("#towStorage").text((sumTowAndStorage).toFixed(2));
+
   // Panel 3 Calculation
-  $("#paintshopLabor").text(sumPaintLabor);
-  $("#bodyshopLabor").text(sumMetalLabor + sumFrameLabor + sumMechLabor);
-  $("#gpDollarPaintshop").text(sumPaintLabor + sumManagerPayRoll);
+  $("#paintshopLabor").text((sumPaintLabor).toFixed(2));
+  $("#bodyshopLabor").text((sumMetalLabor + sumFrameLabor + sumMechLabor).toFixed(2));
+  $("#gpDollarPaintshop").text((sumPaintLabor + sumManagerPayRoll).toFixed(2));
   $("#gpPercentPaintshop").text(((sumPaintLabor + sumManagerPayRoll) / sumPaintLabor * 100).toFixed(0) + '%');
-  $("#gpDollarBodyshop").text((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll);
+  $("#gpDollarBodyshop").text(((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll).toFixed(2));
   $("#gpPercentBodyshop").text(((((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll)) / sumManagerBodyRoll * 100).toFixed(2) + '%');
-  $("#gpPaintDollar").text(sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5));
+  $("#gpPaintDollar").text((sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)).toFixed(2));
   $("#gpPercentPM").text(((sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) / sumPaintAndMaterial * 100).toFixed(0) + '%');
-  $("#gpDollarParts").text(sumPartSales - sumPartsCost);
+  $("#gpDollarParts").text((sumPartSales - sumPartsCost).toFixed(2));
   $("#gpPercentParts").text(((sumPartSales - sumPartsCost) / sumPartSales * 100).toFixed(0) + '%');
 
   // PANEL 4 CALCULATION
-  $("#costOfSublet").text(sumSublet);
-  $("#subletDollarGP").text((sumSublet - sumSublet));
+  $("#costOfSublet").text((sumSublet).toFixed(2));
+  $("#subletDollarGP").text(((sumSublet - sumSublet)).toFixed(2));
   $("#subletPercentGP").text(((sumSublet - sumSublet) / sumSublet * 100).toFixed(0) + '%');
-  $("#totalSales").text((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage));
-  $("#totalDollarGP").text((sumPaintLabor + sumManagerPayRoll) + ((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll) + (sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) + (sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage);
-  $("#totalPercentGP").text((sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage) / ((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage));
+  $("#totalSales").text(((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage)).toFixed(2));
+  $("#totalDollarGP").text(((sumPaintLabor + sumManagerPayRoll) + ((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll) + (sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) + (sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage).toFixed(2));
+  $("#totalPercentGP").text(((sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage) / ((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage)).toFixed(2));
 
 }
 
