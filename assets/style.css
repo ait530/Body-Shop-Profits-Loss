@@ -15,3 +15,7 @@ h3 .panel-title {
 .colWidth2 {
   width: 35%;
 }
+
+#user-container {
+	float: right;
+}
