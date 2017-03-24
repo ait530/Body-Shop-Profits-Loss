@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
   <meta charset="UTF-8">
-    <title>Bodyshop Profits and Loss</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <!-- We don't need the Style right now-->
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+  <title>Bodyshop Profits and Loss</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+  <!--  Style  -->
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
+
 <body>
   <div class="row">
     <div id="main-container" class="container">
       <div class="col-md-12">
         <section class="sidebar">
           <div id="connect">
-            <div class="row">         
+            <div class="row">
               <h2>BODYSHOP PROFIT & LOSS</h2>
               <br>
             </div>
@@ -25,17 +27,18 @@
               <div class="col-lg-6">
                 <h4>Records</h4>
                 <form>
-                  <button id="add-new-button" class="showbutton">Add New</button>
+                  <button id="add-new-button" class="showbutton btn btn-primary">Add New</button>
                 </form>
+                  
               </div>
               <div class="col-lg-6">
                 <h4>Date Search</h4>
                 <form>
                   <input id="startDate" type="text" name="startDate" placeholder="start date here">
                   <input id="endDate" type="text" name="endDate" placeholder="end date here">
-                  <button class="searchButton">Search</button>
-                  <button onclick="printMe()" class="printButton">Print</button>
-                </form>          
+                  <button class="searchButton btn btn-primary">Search</button>
+                  <button onclick="printMe()" class="printButton btn btn-primary ">Print</button>
+                </form>
               </div>
             </div>
           </div>
@@ -45,7 +48,7 @@
 
       <!-- form to fill out the bodyshop work-->
       <div class="col-md-12 hidden" id="add-new-record">
-        <section class="main-section">                
+        <section class="main-section">
           <div class="row">
             <!-- Add Employee  -->
             <div class="panel panel-primary">
@@ -99,7 +102,8 @@
                     <label for="towAndStorage-input">Tow & Storage</label>
                     <input class="form-control" id="towAndStorage-input" type="number">
                   </div>
-                  <button class="btn btn-primary" id="add-job-btn" type="submit">Submit</button>
+                  <button class="btn btn-primary" id="add-job-btn" type="submit">Submit New</button>
+				  <button id="add-new-button" class="hidebutton btn btn-danger">Close New</button>
                 </form>
               </div>
             </div>
@@ -107,54 +111,79 @@
         </section>
       </div>
 
-      <!-- This is the table-->         
+      <!-- This is the table-->
       <div class="row">
-          <div class="col-lg-12">
+        <div class="col-lg-12">
           <!-- Current Employees-->
-            <div class="panel panel-primary">
-              <div class="panel-heading">
-                <h3 class="panel-title" style="width: 100%" cellpadding="0" cellspacing="0"><strong>Current Job</strong></h3>
-              </div>
-              <div class="panel-body">
-                <table class="table table-hover" id='employee-table'>
-                  <thead>
-                    <tr>
-                      <th>Date</th>
-                      <th>RO#</th>
-                      <th>Metal Labor</th>
-                      <th>Frame Labor</th>
-                      <th>Mech Labor</th>
-                      <th>Paint Labor</th>
-                      <th>Part Sales</th>
-                      <th>Parts Cost</th>
-                      <th>Paint & Materials</th>
-                      <th>Sublet</th>
-                      <th>Tow & Storage</th>            
-                    </tr>
-                  </thead>
-                </table>
-                <table class="table table-hover" id='employee-table'>
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title" style="width: 100%" cellpadding="0" cellspacing="0"><strong>Current Job</strong></h3>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover" id='employee-table'>
+                <thead>
                   <tr>
-                    <th><div id="ro">Total</div></th>
-                    <th><div id="metalLabor"></div></th>
-                    <th><div id="frameLabor"></div></th>
-                    <th><div id="mechLabor"></div></th>
-                    <th><div id="paintLabor"></div></th>
-                    <th><div id="partSales"></div></th>
-                    <th><div id="partsCost"></div></th>
-                    <th><div id="paintMaterial"></div></th>
-                    <th><div id="sublet"></div></th>
-                    <th><div id="towStorage"></div></th>
-                    <th><div id="paintPay"></div></th>
+                    <th>Date</th>
+                    <th>RO#</th>
+                    <th>Metal Labor</th>
+                    <th>Frame Labor</th>
+                    <th>Mech Labor</th>
+                    <th>Paint Labor</th>
+                    <th>Part Sales</th>
+                    <th>Parts Cost</th>
+                    <th>Paint & Materials</th>
+                    <th>Sublet</th>
+                    <th>Tow & Storage</th>
                   </tr>
-                </table>
-              </div>
+                </thead>
+              </table>
+              <table class="table table-hover" id='employee-table1'>
+                <tr>
+                  <th>
+                    <div id="">Total</div>
+                  </th>
+                  <th>
+                    <div id=""></div>
+                  </th>
+                  <th>
+                    <div id="metalLabor"></div>
+                  </th>
+                  <th>
+                    <div id="frameLabor"></div>
+                  </th>
+                  <th>
+                    <div id="mechLabor"></div>
+                  </th>
+                  <th>
+                    <div id="paintLabor"></div>
+                  </th>
+                  <th>
+                    <div id="partSales"></div>
+                  </th>
+                  <th>
+                    <div id="partsCost"></div>
+                  </th>
+                  <th>
+                    <div id="paintMaterial"></div>
+                  </th>
+                  <th>
+                    <div id="sublet"></div>
+                  </th>
+                  <th>
+                    <div id="towStorage"></div>
+                  </th>
+                  <th>
+                    <div id="paintPay"></div>
+                  </th>
+                </tr>
+              </table>
             </div>
           </div>
+        </div>
       </div>
       <!-- this is for the calculation-->
       <div class="row">
-        <div class="col-lg-4">      
+        <div class="col-lg-4">
           <table class="table table-bordered">
             <tbody>
               <tr>
@@ -167,14 +196,16 @@
               </tr>
               <tr>
                 <td>Cost of Paint & Materials</td>
-                <td><div id="costOfPaintMaterials"></div></td>
+                <td>
+                  <div id="costOfPaintMaterials"></div>
+                </td>
               </tr>
             </tbody>
-            </table>
-            <button class="btn btn-primary" id="add-total-btn" type="submit">Submit</button>
+          </table>
+          <button class="btn btn-primary" id="add-total-btn" type="submit">Submit</button>
 
-            <br><br>
-            
+          <br><br>
+
           <table class="table table-bordered">
             <tbody>
               <tr>
@@ -200,104 +231,137 @@
               <tr>
                 <td><input class="form-control input-sm" id="vendor5-label" type="text" placeholder="Vendor Name"></td>
                 <td><input class="form-control input-sm" id="vendor5-input" type="number" placeholder="$ 00.00"></td>
-              </tr>               
+              </tr>
             </tbody>
-          </table> 
+          </table>
           <button class="btn btn-primary" id="add-vendor-btn" type="submit">Submit</button>
         </div>
-        
-        
+
+
         <div class="col-lg-4">
           <table class="table table-bordered">
             <tbody>
               <tr>
                 <td class="colWidth1">Paintshop Labor</td>
-                <td class="colWidth2">$<div id="paintshopLabor"></div></td>
+                <td class="colWidth2">$
+                  <div id="paintshopLabor"></div>
+                </td>
               </tr>
               <tr>
                 <td>Bodyshop Labor</td>
-                <td>$<div id="bodyshopLabor"></div></td>
+                <td>$
+                  <div id="bodyshopLabor"></div>
+                </td>
               </tr>
               <tr>
                 <td>GP $ Paintshop</td>
-                <td>$<div id="gpDollarPaintshop"></div></td>
+                <td>$
+                  <div id="gpDollarPaintshop"></div>
+                </td>
               </tr>
               <tr>
                 <td>GP % Paintshop</td>
-                <td><div id="gpPercentPaintshop"></div></td>
+                <td>
+                  <div id="gpPercentPaintshop"></div>
+                </td>
               </tr>
               <tr>
                 <td>GP $ Bodyshop</td>
-                <td>$<div id="gpDollarBodyshop"></div></td>
+                <td>$
+                  <div id="gpDollarBodyshop"></div>
+                </td>
               </tr>
               <tr>
                 <td>GP % Bodyshop</td>
-                <td><div id="gpPercentBodyshop"></div></td>
-              </tr> 
+                <td>
+                  <div id="gpPercentBodyshop"></div>
+                </td>
+              </tr>
               <tr>
                 <td>GP Paint $</td>
-                <td>$<div id="gpPaintDollar"></div></td>
+                <td>$
+                  <div id="gpPaintDollar"></div>
+                </td>
               </tr>
               <tr>
                 <td>GP % on P&M</td>
-                <td><div id="gpPercentPM"></div></td>
+                <td>
+                  <div id="gpPercentPM"></div>
+                </td>
               </tr>
               <tr>
                 <td>GP $ on Parts</td>
-                <td>$<div id="gpDollarParts"></div></td>
+                <td>$
+                  <div id="gpDollarParts"></div>
+                </td>
               </tr>
               <tr>
                 <td>GP % on Parts</td>
-                <td><div id="gpPercentParts"></div></td>
-              </tr> 
+                <td>
+                  <div id="gpPercentParts"></div>
+                </td>
+              </tr>
             </tbody>
-          </table>         
+          </table>
         </div>
 
-        
+
         <div class="col-lg-4">
           <table class="table table-bordered">
             <tbody>
               <tr>
                 <td class="colWidth1">Cost of Sublet</td>
-                <td class="colWidth2">$<div id="costOfSublet"></div></td>
+                <td class="colWidth2">$
+                  <div id="costOfSublet"></div>
+                </td>
               </tr>
               <tr>
                 <td>Sublet $ GP</td>
-                <td>$<div id="subletDollarGP"></div></td>
+                <td>$
+                  <div id="subletDollarGP"></div>
+                </td>
               </tr>
               <tr>
                 <td>Sublet % GP</td>
-                <td>$<div id="subletPercentGP"></div></td>
+                <td>$
+                  <div id="subletPercentGP"></div>
+                </td>
               </tr>
               <tr>
                 <td>Total Sales</td>
-                <td>$<div id="totalSales"></div></td>
+                <td>$
+                  <div id="totalSales"></div>
+                </td>
               </tr>
               <tr>
                 <td>Total $ GP</td>
-                <td>$<div id="totalDollarGP"></div></td>
+                <td>$
+                  <div id="totalDollarGP"></div>
+                </td>
               </tr>
               <tr>
                 <td>Total % GP</td>
-                <td>$<div id="totalPercentGP"></div></td>
-              </tr>               
+                <td>$
+                  <div id="totalPercentGP"></div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
-       
+
       </div>
     </div>
   </div>
   <br>
   <footer>
-      <div class="container">
-        Copyright © 2017 Northwestern Coding Boot Camp
-      </div>
+    <div class="container">
+      Copyright © 2017 Northwestern Coding Boot Camp
+    </div>
   </footer>
-    
+
   <!-- firebase -->
   <script src="https://www.gstatic.com/firebasejs/3.7.3/firebase.js"></script>
   <script type="text/javascript" src="assets/logic.js"></script>
- </body>
+</body>
+
 </html>

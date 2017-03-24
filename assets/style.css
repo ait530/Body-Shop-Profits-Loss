@@ -1,18 +1,17 @@
-   #employee-table {
-      text-align: center;
-   } 
+#employee-table {
+  text-align: center;
+}
 
-    h3 .panel-title {
-      width: 100%;
-      cellpadding: 0;
-      cellspacing: 0;
-    }
+h3 .panel-title {
+  width: 100%;
+  cellpadding: 0;
+  cellspacing: 0;
+}
 
-    .colWidth1 {
-      width: 65%;
-    }
+.colWidth1 {
+  width: 65%;
+}
 
-    .colWidth2 {
-      width: 35%;
-    }
-
+.colWidth2 {
+  width: 35%;
+}
