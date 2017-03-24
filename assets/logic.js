@@ -44,7 +44,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
     // ...
   
   });
-  prompt(provider);
+  alert("Input user name and password at" + " " + provider.providerId);
   console.log(provider);
 });
 
