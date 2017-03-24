@@ -281,6 +281,11 @@ $(".showbutton").click(function() {
   $("#add-new-record").removeClass("hidden");
 });
 
+$(".hidebutton").click(function() {
+  event.preventDefault();   
+  $("#add-new-record").addClass("hidden");
+});
+
 // this is the code for the print button on the top right, opens print dialog box to print the window.
 
 function printMe() {
