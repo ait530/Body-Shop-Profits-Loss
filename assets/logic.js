@@ -24,16 +24,16 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
-$("#sign-in").click(function(){
-// Authentication
-var provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup("provider").then(function(result) {
+$("#sign-in").click(function () {
+  // Authentication
+  var provider = new firebase.auth.GoogleAuthProvider();
+  firebase.auth().signInWithPopup("provider").then(function (result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
     // ...
-  }).catch(function(error) {
+  }).catch(function (error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
@@ -50,7 +50,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 //PANEL 3
 // 2. Submit Button for adding job labors
-$("#add-job-btn").on("click", function(event) {
+$("#add-job-btn").on("click", function (event) {
   event.preventDefault();
 
   // Grabs user input elements and reduces excess space
@@ -114,7 +114,7 @@ var sumSublet = 0;
 var sumTowAndStorage = 0;
 //PANEL 3
 // 3. Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
-database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey) {
+database.ref('newCarJob').on("child_added", function (childSnapshot, prevChildKey) {
   var lastJob = childSnapshot.val();
   var jobToAdd = lastJob.newCarJob;
   console.log(jobToAdd);
@@ -146,13 +146,13 @@ database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey
 
 
   $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + "$ " + projMetalLabor + "</td><td>" + "$ " + projFrameLabor + "</td><td>" +
-    "$ " + projMechLabor + "</td><td>" + "$ " + projPaintLabor + "</td><td>" + "$ " +projPartSales + "</td><td>" + "$ " + projPartsCost + "</td><td>" + "$ " +projPaintAndMaterial + "</td><td>" + "$ " + projSublet + "</td><td>" + "$ " +projTowAndStorage + "</td></tr>");
+    "$ " + projMechLabor + "</td><td>" + "$ " + projPaintLabor + "</td><td>" + "$ " + projPartSales + "</td><td>" + "$ " + projPartsCost + "</td><td>" + "$ " + projPaintAndMaterial + "</td><td>" + "$ " + projSublet + "</td><td>" + "$ " + projTowAndStorage + "</td></tr>");
 
 });
 
 // PANEL 1
 
-$("#add-total-btn").on("click", function(event) {
+$("#add-total-btn").on("click", function (event) {
   event.preventDefault();
 
   //grabs manager input 
@@ -167,9 +167,9 @@ $("#add-total-btn").on("click", function(event) {
   }
 
   database.ref('managerTotalWork').push({
-      managerTotalWork
-    })
-    // Prevents moving to new page
+    managerTotalWork
+  })
+  // Prevents moving to new page
   return false;
 });
 
@@ -177,7 +177,7 @@ $("#add-total-btn").on("click", function(event) {
 var sumManagerPayRoll = 0;
 var sumManagerBodyRoll = 0;
 //Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
-database.ref('managerTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
+database.ref('managerTotalWork').on("child_added", function (childSnapshot, prevChildKey) {
   var managerJob = childSnapshot.val();
   // console.log(managerJob);
   var managerToAdd = managerJob.managerTotalWork;
@@ -190,7 +190,7 @@ database.ref('managerTotalWork').on("child_added", function(childSnapshot, prevC
 
 //PANEL 2
 
-$("#add-vendor-btn").on("click", function(event) {
+$("#add-vendor-btn").on("click", function (event) {
   event.preventDefault();
 
   //grabs labels vendors input 
@@ -235,7 +235,7 @@ var sumInputVendor3 = 0;
 var sumInputVendor4 = 0;
 var sumInputVendor5 = 0;
 
-database.ref('vendorTotalWork').on("child_added", function(childSnapshot, prevChildKey) {
+database.ref('vendorTotalWork').on("child_added", function (childSnapshot, prevChildKey) {
   var vendorJob = childSnapshot.val();
   console.log(vendorJob);
   var vendorToAdd = vendorJob.vendorTotalWork;
@@ -258,7 +258,7 @@ function renderDataToScreen(data) {
   //do stuff
   console.log(data);
   console.log(sumMechLabor);
-    // Add each sum labor data into the table
+  // Add each sum labor data into the table
   $("#metalLabor").text((sumMetalLabor).toFixed(2));
   $("#frameLabor").text((sumFrameLabor).toFixed(2));
   $("#mechLabor").text((sumMechLabor).toFixed(2));
@@ -293,7 +293,7 @@ function renderDataToScreen(data) {
 
 function getDatabaseData() {
   //do stuff
-  firebase.database().ref().once('value').then(function(snapshot) {
+  firebase.database().ref().once('value').then(function (snapshot) {
     renderDataToScreen(snapshot.val())
   })
 }
@@ -304,12 +304,12 @@ getDatabaseData();
 
 // this is used to dispaly and hide entry fields when add new button clicked.
 
-$(".showbutton").click(function() {
+$(".showbutton").click(function () {
   event.preventDefault();   
   $("#add-new-record").removeClass("hidden");
 });
 
-$(".hidebutton").click(function() {
+$(".hidebutton").click(function () {
   event.preventDefault();   
   $("#add-new-record").addClass("hidden");
 });
