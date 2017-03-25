@@ -26,7 +26,6 @@ var database = firebase.database();
 
 $("#sign-in").click(function(){
 // Authentication
-
 var provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup("provider").then(function(result) {
     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -45,7 +44,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
     // ...
   });
   alert("Input user name and password at" + " " + provider.providerId);
-  console.log(provider);
+  // console.log(provider);
 });
 
 
@@ -146,8 +145,8 @@ database.ref('newCarJob').on("child_added", function(childSnapshot, prevChildKey
 
 
 
-  $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + projMetalLabor + "</td><td>" + projFrameLabor + "</td><td>" +
-    projMechLabor + "</td><td>" + projPaintLabor + "</td><td>" + projPartSales + "</td><td>" + projPartsCost + "</td><td>" + projPaintAndMaterial + "</td><td>" + projSublet + "</td><td>" + projTowAndStorage + "</td></tr>");
+  $("#employee-table").append("<tr><td>" + projDate + "</td><td>" + projNumb + "</td><td>" + "$ " + projMetalLabor + "</td><td>" + "$ " + projFrameLabor + "</td><td>" +
+    "$ " + projMechLabor + "</td><td>" + "$ " + projPaintLabor + "</td><td>" + "$ " +projPartSales + "</td><td>" + "$ " + projPartsCost + "</td><td>" + "$ " +projPaintAndMaterial + "</td><td>" + "$ " + projSublet + "</td><td>" + "$ " +projTowAndStorage + "</td></tr>");
 
 });
 
@@ -271,24 +270,24 @@ function renderDataToScreen(data) {
   $("#towStorage").text((sumTowAndStorage).toFixed(2));
 
   // Panel 3 Calculation
-  $("#paintshopLabor").text((sumPaintLabor).toFixed(2));
-  $("#bodyshopLabor").text((sumMetalLabor + sumFrameLabor + sumMechLabor).toFixed(2));
-  $("#gpDollarPaintshop").text((sumPaintLabor + sumManagerPayRoll).toFixed(2));
+  $("#paintshopLabor").text("$" + (sumPaintLabor).toFixed(2));
+  $("#bodyshopLabor").text("$" + (sumMetalLabor + sumFrameLabor + sumMechLabor).toFixed(2));
+  $("#gpDollarPaintshop").text("$" + (sumPaintLabor + sumManagerPayRoll).toFixed(2));
   $("#gpPercentPaintshop").text(((sumPaintLabor + sumManagerPayRoll) / sumPaintLabor * 100).toFixed(0) + '%');
-  $("#gpDollarBodyshop").text(((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll).toFixed(2));
+  $("#gpDollarBodyshop").text("$" + ((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll).toFixed(2));
   $("#gpPercentBodyshop").text(((((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll)) / sumManagerBodyRoll * 100).toFixed(2) + '%');
-  $("#gpPaintDollar").text((sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)).toFixed(2));
+  $("#gpPaintDollar").text("$" + (sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)).toFixed(2));
   $("#gpPercentPM").text(((sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) / sumPaintAndMaterial * 100).toFixed(0) + '%');
-  $("#gpDollarParts").text((sumPartSales - sumPartsCost).toFixed(2));
+  $("#gpDollarParts").text("$" + (sumPartSales - sumPartsCost).toFixed(2));
   $("#gpPercentParts").text(((sumPartSales - sumPartsCost) / sumPartSales * 100).toFixed(0) + '%');
 
   // PANEL 4 CALCULATION
-  $("#costOfSublet").text((sumSublet).toFixed(2));
-  $("#subletDollarGP").text(((sumSublet - sumSublet)).toFixed(2));
+  $("#costOfSublet").text("$" + (sumSublet).toFixed(2));
+  $("#subletDollarGP").text("$" + ((sumSublet - sumSublet)).toFixed(2));
   $("#subletPercentGP").text(((sumSublet - sumSublet) / sumSublet * 100).toFixed(0) + '%');
-  $("#totalSales").text(((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage)).toFixed(2));
-  $("#totalDollarGP").text(((sumPaintLabor + sumManagerPayRoll) + ((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll) + (sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) + (sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage).toFixed(2));
-  $("#totalPercentGP").text(((sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage) / ((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage)).toFixed(2));
+  $("#totalSales").text("$" + ((sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage)).toFixed(2));
+  $("#totalDollarGP").text("$" + ((sumPaintLabor + sumManagerPayRoll) + ((sumMetalLabor + sumFrameLabor + sumMechLabor) - sumManagerBodyRoll) + (sumPaintAndMaterial - (sumInputVendor1 + sumInputVendor2 + sumInputVendor3 + sumInputVendor4 + sumInputVendor5)) + (sumPartSales - sumPartsCost) + ((sumSublet - sumSublet)) + sumTowAndStorage).toFixed(2));
+  $("#totalPercentGP").text(((sumPartSales - sumPartsCost) + (sumSublet - sumSublet) + (sumTowAndStorage) / (sumMetalLabor + sumFrameLabor + sumMechLabor + sumPaintLabor + sumPartSales + sumPartsCost + sumPaintAndMaterial + sumSublet + sumTowAndStorage) * 100).toFixed(0) + '%');
 
 }
 
