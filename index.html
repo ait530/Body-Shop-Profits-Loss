@@ -20,13 +20,13 @@
                     <div id="connect">
                         <div class="row">
                             <h2>BODYSHOP PROFIT & LOSS</h2>
-                            <br> 
+                            <br>
                             <div id="user-container">
                                 <div hidden id="user-name"></div>
                                 <button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
                                   Sign-out
                                 </button>
-                                <button id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">Sign-in with Google</button> 
+                                <button id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">Sign-in with Google</button>
                             </div>
                         </div>
                         <div class="row">
@@ -56,44 +56,45 @@
                         <!-- Add Employee  -->
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><strong>Add Job</strong></h3> </div>
+                                <h3 class="panel-title"><strong>Add Job</strong></h3>
+                            </div>
                             <div class="panel-body">
                                 <!-- Entry Form -->
-                                <form >
+                                <form>
                                     <div class="form-group col-md-2">
                                         <label for="date-input">Job Date<br> (DD/MM/YY)</label>
-                                        <input class="form-control input-sm" id="date-input" type="text" placeholder="DD/MM/YY"> </div>
+                                        <input class="form-control input-sm" id="date-input" type="text" placeholder="DD/MM/YY">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="projNumb-input">RO Number</label>
-                                        <input class="form-control input-sm" id="projNumb-input" type="text" placeholder="12345"> </div>
+                                        <input class="form-control input-sm" id="projNumb-input" type="text" placeholder="12345">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="metalLabor-input">Metal Labor</label>
-                                        <input class="form-control input-sm" id="metalLabor-input" type="text" placeholder="$ 00.00"> </div>
+                                        <input class="form-control input-sm" id="metalLabor-input" type="text" placeholder="$ 00.00">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="frameLabor-input">Frame Labor</label>
-                                        <input class="form-control input-sm" id="frameLabor-input" type="text" placeholder="$ 00.00"> </div>
+                                        <input class="form-control input-sm" id="frameLabor-input" type="text" placeholder="$ 00.00">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="mechLabor-input">Mech Labor</label>
-                                        <input class="form-control input-sm" id="mechLabor-input" type="text" placeholder="$ 00.00"> </div>
+                                        <input class="form-control input-sm" id="mechLabor-input" type="text" placeholder="$ 00.00">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="paintLabor-input">Paint Labor</label>
-                                        <input class="form-control input-sm" id="paintLabor-input" type="text" placeholder="$ 00.00"> </div>
+                                        <input class="form-control input-sm" id="paintLabor-input" type="text" placeholder="$ 00.00">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="partSales-input">Part Sales</label>
-                                        <input class="form-control input-sm" id="partSales-input" type="text" placeholder="$ 00.00"> </div>
+                                        <input class="form-control input-sm" id="partSales-input" type="text" placeholder="$ 00.00">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="partsCost-input">Parts Cost</label>
-                                        <input class="form-control input-sm" id="partsCost-input" type="text" placeholder="$ 00.00"> </div>
+                                        <input class="form-control input-sm" id="partsCost-input" type="text" placeholder="$ 00.00">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="paintAndMaterial-input">Paint & Materials</label>
-                                        <input class="form-control input-sm" id="paintAndMaterial-input" type="text" placeholder="$ 00.00"> </div>
+                                        <input class="form-control input-sm" id="paintAndMaterial-input" type="text" placeholder="$ 00.00">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="sublet-input"><br>Sublet</label>
-                                        <input class="form-control input-sm" id="sublet-input" type="text" placeholder="$ 00.00"> </div>
+                                        <input class="form-control input-sm" id="sublet-input" type="text" placeholder="$ 00.00">                                        </div>
                                     <div class="form-group col-md-1">
                                         <label for="towAndStorage-input">Tow & Storage</label>
-                                        <input class="form-control input-sm" id="towAndStorage-input" type="text" placeholder="$ 00.00"> </div>
-                                        <br>
+                                        <input class="form-control input-sm" id="towAndStorage-input" type="text" placeholder="$ 00.00">                                        </div>
+                                    <br>
                                     <button class="btn btn-primary" id="add-job-btn" type="submit">Submit New</button>
                                     <button id="add-new-button" class="hidebutton btn btn-danger">Close New</button>
                                 </form>
@@ -108,7 +109,8 @@
                     <!-- Current Employees-->
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title"  cellpadding="0" cellspacing="0"><strong>Current Job</strong></h3> </div>
+                            <h3 class="panel-title" cellpadding="0" cellspacing="0"><strong>Current Job</strong></h3>
+                        </div>
                         <div class="panel-body">
                             <table class="table table-hover row lower-section" id='employee-table'>
                                 <thead>
@@ -179,12 +181,12 @@
                             <tr>
                                 <td class="colWidth1">Total Paintshop Payroll</td>
                                 <td class="colWidth2">
-                                    <input class="form-control input-sm" id="totalPaintshopPayroll-input" type="text" placeholder="$ 00.00"> </td>
+                                    <input class="form-control input-sm" id="totalPaintshopPayroll-input" type="text" placeholder="$ 00.00">                                    </td>
                             </tr>
                             <tr>
                                 <td>Total Bodyshop Payroll</td>
                                 <td>
-                                    <input class="form-control input-sm" id="totalBodyshopPayroll-input" type="text" placeholder="$ 00.00"> </td>
+                                    <input class="form-control input-sm" id="totalBodyshopPayroll-input" type="text" placeholder="$ 00.00">                                    </td>
                             </tr>
                             <tr>
                                 <td>Cost of Paint & Materials</td>
@@ -205,33 +207,33 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor1-label" type="text" placeholder="Vendor Name"> </td>
+                                    <input class="form-control input-sm" id="vendor1-label" type="text" placeholder="Vendor Name">                                    </td>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor1-input" type="text" placeholder="$ 00.00"> </td>
+                                    <input class="form-control input-sm" id="vendor1-input" type="text" placeholder="$ 00.00">                                    </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor2-label" type="text" placeholder="Vendor Name"> </td>
+                                    <input class="form-control input-sm" id="vendor2-label" type="text" placeholder="Vendor Name">                                    </td>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor2-input" type="text" placeholder="$ 00.00"> </td>
+                                    <input class="form-control input-sm" id="vendor2-input" type="text" placeholder="$ 00.00">                                    </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor3-label" type="text" placeholder="Vendor Name"> </td>
+                                    <input class="form-control input-sm" id="vendor3-label" type="text" placeholder="Vendor Name">                                    </td>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor3-input" type="text" placeholder="$ 00.00"> </td>
+                                    <input class="form-control input-sm" id="vendor3-input" type="text" placeholder="$ 00.00">                                    </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor4-label" type="text" placeholder="Vendor Name"> </td>
+                                    <input class="form-control input-sm" id="vendor4-label" type="text" placeholder="Vendor Name">                                    </td>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor4-input" type="text" placeholder="$ 00.00"> </td>
+                                    <input class="form-control input-sm" id="vendor4-input" type="text" placeholder="$ 00.00">                                    </td>
                             </tr>
                             <tr>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor5-label" type="text" placeholder="Vendor Name"> </td>
+                                    <input class="form-control input-sm" id="vendor5-label" type="text" placeholder="Vendor Name">                                    </td>
                                 <td>
-                                    <input class="form-control input-sm" id="vendor5-input" type="text" placeholder="$ 00.00"> </td>
+                                    <input class="form-control input-sm" id="vendor5-input" type="text" placeholder="$ 00.00">                                    </td>
                             </tr>
                         </tbody>
                     </table>
@@ -248,7 +250,8 @@
                             </tr>
                             <tr>
                                 <td>Bodyshop Labor $</td>
-                                <td><div id="bodyshopLabor"></div>
+                                <td>
+                                    <div id="bodyshopLabor"></div>
                                 </td>
                             </tr>
                             <tr>
