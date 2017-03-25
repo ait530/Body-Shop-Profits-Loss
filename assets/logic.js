@@ -117,7 +117,7 @@ var sumTowAndStorage = 0;
 database.ref('newCarJob').on("child_added", function (childSnapshot, prevChildKey) {
   var lastJob = childSnapshot.val();
   var jobToAdd = lastJob.newCarJob;
-  console.log(jobToAdd);
+  // console.log(jobToAdd);
 
   //Store everything into a variable.
   projDate = jobToAdd.projectDate;
@@ -237,7 +237,7 @@ var sumInputVendor5 = 0;
 
 database.ref('vendorTotalWork').on("child_added", function (childSnapshot, prevChildKey) {
   var vendorJob = childSnapshot.val();
-  console.log(vendorJob);
+  // console.log(vendorJob);
   var vendorToAdd = vendorJob.vendorTotalWork;
 
   // // Panel 2
@@ -256,8 +256,8 @@ database.ref('vendorTotalWork').on("child_added", function (childSnapshot, prevC
 
 function renderDataToScreen(data) {
   //do stuff
-  console.log(data);
-  console.log(sumMechLabor);
+  // console.log(data);
+  // console.log(sumMechLabor);
   // Add each sum labor data into the table
   $("#metalLabor").text((sumMetalLabor).toFixed(2));
   $("#frameLabor").text((sumFrameLabor).toFixed(2));
