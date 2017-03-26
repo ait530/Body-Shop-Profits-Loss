@@ -9,6 +9,11 @@ h3 .panel-title {
   cellspacing: 0;
 }
 
+tfoot {
+  font-weight: bold;
+  text-align: left;
+}
+
 .colWidth1 {
   width: 65%;
 }
