@@ -259,15 +259,15 @@ function renderDataToScreen(data) {
   // console.log(data);
   // console.log(sumMechLabor);
   // Add each sum labor data into the table
-  $("#metalLabor").text((sumMetalLabor).toFixed(2));
-  $("#frameLabor").text((sumFrameLabor).toFixed(2));
-  $("#mechLabor").text((sumMechLabor).toFixed(2));
-  $("#paintLabor").text((sumPaintLabor).toFixed(2));
-  $("#partSales").text((sumPartSales).toFixed(2));
-  $("#partsCost").text((sumPartsCost).toFixed(2));
-  $("#paintMaterial").text((sumPaintAndMaterial).toFixed(2));
-  $("#sublet").text((sumSublet).toFixed(2));
-  $("#towStorage").text((sumTowAndStorage).toFixed(2));
+  $("#metalLabor").text("$ " + (sumMetalLabor).toFixed(2));
+  $("#frameLabor").text("$ " + (sumFrameLabor).toFixed(2));
+  $("#mechLabor").text("$ " + (sumMechLabor).toFixed(2));
+  $("#paintLabor").text("$ " + (sumPaintLabor).toFixed(2));
+  $("#partSales").text("$ " + (sumPartSales).toFixed(2));
+  $("#partsCost").text("$ " + (sumPartsCost).toFixed(2));
+  $("#paintMaterial").text("$ " + (sumPaintAndMaterial).toFixed(2));
+  $("#sublet").text("$ " + (sumSublet).toFixed(2));
+  $("#towStorage").text("$ " + (sumTowAndStorage).toFixed(2));
 
   // Panel 3 Calculation
   $("#paintshopLabor").text("$" + (sumPaintLabor).toFixed(2));
