@@ -6,6 +6,7 @@ Northwestern Coding Boot Camp Group Project
 Week 8 & 9 Group Assignment, March 2017
 
 ```
+![Bodyshop Profit & Loss App](assets/images/bpl.jpg)
 
 ### Project
 ```
