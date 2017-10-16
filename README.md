@@ -11,7 +11,7 @@ Week 8 & 9 Group Project Assignment, March 2017
 ### Project
 ```
 
-Developement of a profit and loss sheet for the collision repair industry.
+Development of a profit and loss sheet for the collision repair industry.
 
 ```
 
